@@ -41,6 +41,14 @@ def login():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
+        # return {user.id: {
+        #     'id': user.id,
+        #     'username': user.username,
+        #     'email': user.email,
+        #     'balance': str(user.balance),
+        #     'holdings_value': str(user.holdings_value),
+        #     'createdAt': user.createdAt,
+        # }}
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
