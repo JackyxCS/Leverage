@@ -1,0 +1,25 @@
+// base url for fetch requests
+https://cloud.iexapis.com/
+
+// append to all api fetch requests
+https://sandbox.iexapis.com/stable/
+
+// for grabbing single stock's details
+https://sandbox.iexapis.com/stable/stock/IBM/quote?token=Tsk_4825130f795b42ff9506aed7d6fe7fc8
+
+// for grabbing supported tickers and company names (search)
+https://sandbox.iexapis.com/stable/ref-data/iex/symbols?token=Tsk_4825130f795b42ff9506aed7d6fe7fc8
+
+// for grabbing intra-day data for a stock
+https://sandbox.iexapis.com/stable/stock/aapl/intraday-prices?token=Tsk_4825130f795b42ff9506aed7d6fe7fc8
+
+// grab latest price only of a stock
+https://sandbox.iexapis.com/stable/stock/IBM/quote/latestPrice?token=Tsk_4825130f795b42ff9506aed7d6fe7fc8
+
+// color pallette for Robinhood:
+// green: #00c805
+// red: #FF5000
+
+// update database
+heroku run -a myherokuappname flask db upgrade
+heroku run -a myherokuappname flask seed all
