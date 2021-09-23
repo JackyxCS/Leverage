@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
+import SearchBarForm from './SearchBarForm';
 
 const NavBar = () => {
 
@@ -41,6 +42,7 @@ const NavBar = () => {
     return (
       <nav>
         <h1>Hi User</h1>
+        <SearchBarForm />
         <LogoutButton />
       </nav>
     )

@@ -8,13 +8,16 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 // import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import TransferForm from './components/TransferForm';
+import BuyStockForm from './components/BuyStockForm';
+import StockPageGraph from './components/StockPageGraph';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -47,9 +50,16 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/transfers'>
           <h1>Transfers</h1>
+          <TransferForm />
         </ProtectedRoute>
         <ProtectedRoute path='/portfolio' exact={true} >
           <h1>Portfolio Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/stocks/:stockticker' exact={true} >
+          <h1>this is a ticker</h1>
+          <h1>Buy form here</h1>
+          <BuyStockForm />
+          <StockPageGraph />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

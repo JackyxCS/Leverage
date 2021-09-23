@@ -62,8 +62,8 @@ class User(db.Model, UserMixin):
             'balance': str(self.balance),
             'holdings_value': str(self.holdings_value),
             'createdAt': self.createdAt,
-            'friend_requests': self.friend_requests,
-            'friends': self.friends
+            # 'friend_requests': self.friend_requests,
+            # 'friends': self.friends
             # 'transaction_details': self.transaction_details.to_dict(),
             # 'watchlist_details': self.watchlist_details.to_dict(),
             # 'transfer_details': self.transfer_details.to_dict(),
@@ -91,9 +91,9 @@ class Transaction(db.Model):
             'trade_price': str(self.trade_price),
             'trans_quantity': str(self.trans_quantity),
             'datetime': self.datetime,
-            'user_details': self.user_details.to_dict(),
-            'reaction_details': self.reaction_details.to_dict(),
-            'comment_details': self.comment_details.to_dict(),
+            # 'user_details': self.user_details.to_dict(),
+            # 'reaction_details': self.reaction_details.to_dict(),
+            # 'comment_details': self.comment_details.to_dict(),
         }
 
 class WatchList(db.Model):
