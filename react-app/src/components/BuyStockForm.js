@@ -43,7 +43,6 @@ const BuyStockForm = () => {
     }, [shares, activeForm, transactionPrice, user, ownedShares])
 
     useEffect(() => {
-        dispatch(getKey())
         dispatch(fetchOneStockTransactions(stockticker))
     }, [dispatch, stockticker])
 
@@ -174,6 +173,7 @@ const BuyStockForm = () => {
 
     return (
         <div>
+            {/* {transactionPrice} */}
             {formDisplay}
         </div>
     )
