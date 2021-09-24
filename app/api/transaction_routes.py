@@ -20,7 +20,7 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def getTransactions():
     userId = current_user.id
-    transactions = Transaction.query.filter(Transaction.id == userId).all()
+    transactions = Transaction.query.filter(Transaction.userId == userId).all()
     return {'transactions': [transaction.to_dict() for transaction in transactions]}
 
 @transaction_routes.route('/stock', methods=['POST'])

@@ -1,16 +1,10 @@
 // Define Action Types as Constants
 const SET_SEARCH = 'search/setSearch'
-const SET_DETAILS = 'details/setDetails'
 
 // Define Action Creators
 const setSearch = (results) => ({
     type: SET_SEARCH,
     results
-})
-
-const setStockDetails = (details) => ({
-    type: SET_DETAILS,
-    details
 })
 
 // Define Thunks
@@ -25,10 +19,17 @@ export const fetchStockData = (key, searchInput) => async (dispatch) => {
     dispatch(setSearch(filtered))
 }
 
-// fetches a company's data
+// fetches a company's financial data
 // not storing in redux store
 export const fetchStockDetails = (key, ticker) => async () => {
     const res = await fetch(`https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${key}`)
+    const json = await res.json()
+    return json
+}
+
+// fetches a company's general data
+export const fetchCompanyDetails = (key, ticker) => async () => {
+    const res = await fetch(`https://cloud.iexapis.com/stable/stock/${ticker}/company?token=${key}`)
     const json = await res.json()
     return json
 }
@@ -37,6 +38,22 @@ export const fetchStockDetails = (key, ticker) => async () => {
 // not storing in redux store
 export const fetchStockGraph = (key, ticker) => async () => {
     const res = await fetch(`https://cloud.iexapis.com/stable/stock/${ticker}/intraday-prices?token=${key}`)
+    const json = await res.json()
+    return json
+}
+
+// fetches a company's news (1 news posting)
+// not storing in redux store
+export const fetchStockNews = (key, ticker) => async () => {
+    const res = await fetch(`https://cloud.iexapis.com/stable/stock/${ticker}/news/last/1?token=${key}`)
+    const json = await res.json()
+    return json
+}
+
+// fetches a company's news (5 news postings)
+// not storing in redux store
+export const fetchManyStockNews = (key, ticker) => async () => {
+    const res = await fetch(`https://cloud.iexapis.com/stable/stock/${ticker}/news/last/5?token=${key}`)
     const json = await res.json()
     return json
 }
@@ -76,8 +93,6 @@ export const sellStock = (payload) => async() => {
         return result
     }
 }
-
-// fetch request to sell stock
 
 // Define an initial state
 const initialState = {}

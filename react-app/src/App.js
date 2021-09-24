@@ -11,6 +11,9 @@ import { authenticate } from './store/session';
 import TransferForm from './components/TransferForm';
 import BuyStockForm from './components/BuyStockForm';
 import StockPageGraph from './components/StockPageGraph';
+import { getKey } from './store/key';
+import StockDetails from './components/StockDetails';
+import PortfolioPage from './components/PortfolioPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +22,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getKey())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -54,12 +58,14 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/portfolio' exact={true} >
           <h1>Portfolio Page</h1>
+          <PortfolioPage />
         </ProtectedRoute>
         <ProtectedRoute path='/stocks/:stockticker' exact={true} >
           <h1>this is a ticker</h1>
           <h1>Buy form here</h1>
           <BuyStockForm />
           <StockPageGraph />
+          <StockDetails />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
