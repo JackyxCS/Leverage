@@ -10,8 +10,9 @@ const setSearch = (results) => ({
 // Define Thunks
 
 // fetches all stock tickers and company names that match search input
-// sotring in redux store
+// storing in redux store
 export const fetchStockData = (key, searchInput) => async (dispatch) => {
+    console.log('here')
     const res = await fetch(`https://cloud.iexapis.com/stable/ref-data/iex/symbols?token=${key}`)
     const json = await res.json()
     let filtered = json.filter(value => value["symbol"].includes(searchInput.toUpperCase()) ||
@@ -58,8 +59,63 @@ export const fetchManyStockNews = (key, ticker) => async () => {
     return json
 }
 
+// fetch stocks for portfolio page
+export const fetchPortfolioStocks = (key, ownedShares, balance) => async () => {
+    const sharesArr = Object.keys(ownedShares)
+    const numSharesArr = Object.values(ownedShares)
+    const graphArr = []
+    const arr = []
+    for (let i = 0; i < sharesArr.length; i++) {
+        const res = await fetch(`https://cloud.iexapis.com/stable/stock/${sharesArr[i]}/intraday-prices?token=${key}`)
+        const json = await res.json()
+        arr.push(json)
+    }
+    if (arr.length === 0) return arr;
+
+    // loop to fill in first value
+    for (let i = 0; i < arr.length; i++) {
+        let eachTimeFrame = arr[i]
+        for (let j = 0; j < eachTimeFrame.length; j++) {
+            while (!eachTimeFrame[0].average || eachTimeFrame[j].average === 0) {
+                eachTimeFrame[0].average = eachTimeFrame[j].average
+            }
+        }
+    }
+
+    // set up another loop to backtrack for averages in arr
+    for (let i = 0; i < arr.length; i ++) {
+        let eachTimeFrame = arr[i]
+        for (let j = 0; j < eachTimeFrame.length; j++) {
+            while (!eachTimeFrame[j].average || eachTimeFrame[j].average === 0) {
+                    eachTimeFrame[j].average = eachTimeFrame[j - 1].average
+                    j--
+            }
+        }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        let eachTimeFrame = arr[i]
+        let numShares = numSharesArr[i]
+        if (graphArr.length === 0) {
+            for (let j = 0; j < eachTimeFrame.length; j++) {
+                let eachPlot = eachTimeFrame[j]
+                graphArr.push({
+                    "average": eachPlot["average"] * numShares + parseFloat(balance),
+                    "minute": eachPlot["minute"], "label": eachPlot["label"]
+                })
+            }
+        } else {
+            for (let k = 0; k < eachTimeFrame.length; k++) {
+                let eachPlot = eachTimeFrame[k]
+                graphArr[k].average += (eachPlot["average"] * numShares)
+            }
+        }
+    }
+    return graphArr;
+}
+
 // fetch request to buy stock
-export const buyStock = (payload) => async() => {
+export const buyStock = (payload) => async () => {
     const res = await fetch('/api/transactions/buy', {
         method: 'POST',
         headers: {
@@ -77,7 +133,7 @@ export const buyStock = (payload) => async() => {
 }
 
 // fetch request to sell stock
-export const sellStock = (payload) => async() => {
+export const sellStock = (payload) => async () => {
     const res = await fetch('/api/transactions/sell', {
         method: 'POST',
         headers: {

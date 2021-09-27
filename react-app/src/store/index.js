@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import apiReducer from './key';
+import ownedStockReducer from './ownedstocks';
 import session from './session'
 import searchReducer from './stocks';
 import transactionsReducer from './transactions';
 import transfersReducer from './transfer';
+import watchlistsReducer from './watchlists';
+import watchliststocksReducer from './watchliststocks';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +15,9 @@ const rootReducer = combineReducers({
   transfers: transfersReducer,
   search: searchReducer,
   transactions: transactionsReducer,
+  owned: ownedStockReducer, 
+  lists: watchlistsReducer,
+  stocks: watchliststocksReducer,
 });
 
 

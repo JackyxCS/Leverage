@@ -27,12 +27,12 @@ const BuyStockForm = () => {
     const [validationErrors, setValidationErrors] = useState([])
 
     // API (comment back in for testing)
-    // useEffect(() => { 
-    //     dispatch(fetchStockDetails(key, stockticker))
-    //         .then((res) => {
-    //             setTransactionPrice(res.latestPrice)
-    //         })
-    // })
+    useEffect(() => { 
+        dispatch(fetchStockDetails(key, stockticker))
+            .then((res) => {
+                setTransactionPrice(res.latestPrice)
+            })
+    })
 
     useEffect(() => {
         const errors = [];
@@ -49,7 +49,7 @@ const BuyStockForm = () => {
     const handleBuySubmit = async (e) => {
         e.preventDefault();
 
-        if (validationErrors > 0) return;
+        if (validationErrors.length > 0) return;
 
         const payload = {
             userId,

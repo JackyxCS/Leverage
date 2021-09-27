@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getKey } from '../store/key';
@@ -10,6 +10,7 @@ const SearchBarForm = () => {
     const results = useSelector(state => Object.values(state.search))
 
     const [searchInput, setSearchInput] = useState('')
+    const [showContainer, setShowContainer] = useState(true)
 
     useEffect(() => {
         dispatch(getKey())
@@ -18,17 +19,26 @@ const SearchBarForm = () => {
     useEffect(() => {
         if (searchInput) {
             // API (comment back in for testing)
-            // dispatch(fetchStockData(key, searchInput))
+            dispatch(fetchStockData(key, searchInput))
         }
     }, [searchInput, key, dispatch])
 
     const resetSearch = () => {
         setSearchInput('')
+        setShowContainer(true)
         dispatch(getKey())
     }
 
+    document.body.addEventListener('click', function (e) {
+        let target = e.target;
+        if (target.id !== 'searchbox') {
+            setShowContainer(false)
+        }
+        e.stopPropagation()
+    });
+
     let searchOutput
-    if (searchInput.length === 0) {
+    if (showContainer === false || searchInput.length === 0) {
         searchOutput = (<></>)
     } else if (results.length === 0 && searchInput.length > 0) {
         searchOutput = (
@@ -38,7 +48,7 @@ const SearchBarForm = () => {
         )
     } else if (results.length > 0) {
         searchOutput = (
-            <>
+            <div id="search-container">
                 {results && results.map((result) => {
                     return (
                         <div key={result.symbol}>
@@ -49,15 +59,17 @@ const SearchBarForm = () => {
                         </div>
                     )
                 })}
-            </>
+            </div>
         )
     }
 
     return (
-        <div>
+        <div id="search-div">
             <div>search goes here</div>
             <input
+                id="searchbox"
                 onChange={e => setSearchInput(e.target.value)}
+                onFocus={() => setShowContainer(true)}
                 value={searchInput}
                 placeholder="Search"
             />

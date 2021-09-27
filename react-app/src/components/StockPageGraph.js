@@ -26,8 +26,8 @@ const StockPageGraph = () => {
                 const graphArray = []
                 let color = ''
                 for (let i = 0; i < data.length; i++) {
-                    if (data[i].minute[data[i].minute.length - 1] === "0" ||
-                        data[i].minute[data[i].minute.length - 1] === "5") {
+                    if ((data[i].minute[data[i].minute.length - 1] === "0" ||
+                        data[i].minute[data[i].minute.length - 1] === "5") && (data[i].average !== null) && (data[i].average !== 0)) {
                         graphArray.push(data[i])
                     }
                 }
@@ -65,7 +65,7 @@ const StockPageGraph = () => {
     }
 
     function CustomTooltip({ payload }) {
-        if (payload.length === 0) return (<></>)
+        if (!payload || payload.length === 0) return (<></>)
         return (
             <div>
                 {payload[0].payload.label}

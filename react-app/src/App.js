@@ -14,6 +14,11 @@ import StockPageGraph from './components/StockPageGraph';
 import { getKey } from './store/key';
 import StockDetails from './components/StockDetails';
 import PortfolioPage from './components/PortfolioPage';
+import { fetchOwnedStocks } from './store/ownedstocks';
+import WatchListForm from './components/WatchListForm';
+import WatchListDisplay from './components/WatchListDisplay';
+import { fetchLists } from './store/watchlists';
+import WatchListStock from './components/WatchListStock';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -23,6 +28,8 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(getKey())
+      await dispatch(fetchOwnedStocks())
+      await dispatch(fetchLists())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -59,13 +66,19 @@ function App() {
         <ProtectedRoute path='/portfolio' exact={true} >
           <h1>Portfolio Page</h1>
           <PortfolioPage />
+          <WatchListForm />
+          <WatchListDisplay />
         </ProtectedRoute>
         <ProtectedRoute path='/stocks/:stockticker' exact={true} >
           <h1>this is a ticker</h1>
           <h1>Buy form here</h1>
           <BuyStockForm />
           <StockPageGraph />
+          <WatchListStock />
           <StockDetails />
+        </ProtectedRoute>
+        <ProtectedRoute path='/social' exact={true}>
+          <div>This is the social path</div>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

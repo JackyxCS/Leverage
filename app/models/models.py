@@ -110,7 +110,7 @@ class WatchList(db.Model):
             'userId': self.userId,
             'title': self.title,
             'user_details': self.user_details.to_dict(),
-            'stock_details': self.stock_details.to_dict(),
+            # 'stock_details': self.stock_details,
         }
 
 class WatchListStock(db.Model):
@@ -118,7 +118,7 @@ class WatchListStock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     watchListId = db.Column(db.Integer, db.ForeignKey("watchlists.id"), nullable=False)
     ticker = db.Column(db.String, nullable=False)
-    company_name = db.Column(db.String, nullable=False)
+    company_name = db.Column(db.String)
     watchlist_details = db.relationship("WatchList", back_populates="stock_details")
 
     def to_dict(self):
@@ -126,7 +126,8 @@ class WatchListStock(db.Model):
             'id': self.id,
             'watchListId': self.watchListId,
             'ticker': self.ticker,
-            'company_name': self.company_name,
+            # 'company_name': self.company_name,
+            # 'watchlist_details': self.watchlist_details.to_dict()
         }
 
 class Transfer(db.Model):
