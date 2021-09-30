@@ -1,4 +1,4 @@
-import { fetchLists } from "./watchlists"
+// import { fetchLists } from "./watchlists"
 
 // Define Action Types as Constants
 const SET_STOCKS = 'watchliststocks/setStocks'

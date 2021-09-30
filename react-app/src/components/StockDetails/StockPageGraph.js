@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
-import { getKey } from '../store/key';
-import { XAxis, YAxis, Tooltip, Line, LineChart } from 'recharts';
-import { fetchStockGraph } from '../store/stocks';
+// import { getKey } from '../../store/key';
+import { XAxis, YAxis, Tooltip, Line, LineChart, ReferenceLine } from 'recharts';
+import { fetchStockGraph } from '../../store/stocks';
+import styles from './SingleStockPage.module.css';
 
 const StockPageGraph = () => {
-    const user = useSelector(state => state?.session.user)
+    // const user = useSelector(state => state?.session.user)
     const key = useSelector(state => state?.key.key)
     const { stockticker } = useParams()
-    const { id: userId } = user
+    // const { id: userId } = user
     const dispatch = useDispatch()
 
     const [graphObject, setGraphObject] = useState([])
@@ -25,6 +26,7 @@ const StockPageGraph = () => {
             (data) => {
                 const graphArray = []
                 let color = ''
+                if (!data) return;
                 for (let i = 0; i < data.length; i++) {
                     if ((data[i].minute[data[i].minute.length - 1] === "0" ||
                         data[i].minute[data[i].minute.length - 1] === "5") && (data[i].average !== null) && (data[i].average !== 0)) {
@@ -38,7 +40,6 @@ const StockPageGraph = () => {
                     color = "#00C805"
                 }
                 setGraphObject(graphArray)
-                console.log(graphArray)
                 setGraphColor(color)
                 setStockPrice(graphArray[graphArray.length - 1].average)
                 setStockPriceChange(graphArray[graphArray.length - 1].average -
@@ -73,34 +74,50 @@ const StockPageGraph = () => {
         )
     }
 
-    return (
-        <div>Graph is here
-            <div>{stockPrice}</div>
-            <div>{stockPriceChange}</div>
-            <div>{stockPercentChange}</div>
-            <LineChart
-                data={graphObject}
-                width={400}
-                height={400}
-                onMouseMove={(data) => updatePriceAction(data)}
-                onMouseLeave={() => returnPriceAction()}
-            >
-                <Tooltip
-                    offset={0}
-                    content={<CustomTooltip />}
-                    position={{ y: -20 }}
-                />
-                <XAxis dataKey="label" hide={true} />
-                <YAxis hide={true} domain={['dataMin', 'dataMax']} />
-                <Line type="monotone"
-                    dataKey="average"
-                    stroke={graphColor}
-                    dot={false}
-                    strokeWidth={2}
-                />
-            </LineChart>
-        </div>
-    )
+    if (graphObject.length === 0) {
+        return (<div>No information found.</div>)
+    } else {
+        return (
+            <div>
+                <div>
+                    <div className={styles.portfoliovalue}>{stockticker.toUpperCase()}</div>
+                    <div className={styles.portfoliovalue}>${stockPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                    <div className={styles.portfoliochange}>${stockPriceChange.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ({stockPercentChange.toFixed(2)}%) Today</div>
+                    <LineChart
+                        data={graphObject}
+                        width={700}
+                        height={400}
+                        onMouseMove={(data) => updatePriceAction(data)}
+                        onMouseLeave={() => returnPriceAction()}
+                    >
+                        <Tooltip
+                            offset={0}
+                            content={<CustomTooltip />}
+                            position={{ y: -20 }}
+                        />
+                        <XAxis dataKey="label" hide={true} />
+                        <YAxis hide={true} domain={['dataMin', 'dataMax']} />
+                        <Line type="monotone"
+                            dataKey="average"
+                            stroke={graphColor}
+                            dot={false}
+                            strokeWidth={2}
+                        />
+                        <ReferenceLine
+                            y={graphObject[0].average}
+                            strokeWidth={1.5}
+                            strokeHeight={1.5}
+                            strokeDasharray="1 6"
+                            stroke="lightslategray"
+                        />
+                    </LineChart>
+                </div>
+                <div className={styles.portfoliotime}>
+                    1D
+                </div>
+            </div>
+        )
+    }
 }
 
 export default StockPageGraph

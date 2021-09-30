@@ -1,11 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import commentsReducer from './comments';
+import friendRequestReducer from './friendrequests';
+import friendRequestFromReducer from './friendrequestsfrom';
+import friendsReducer from './friends';
 import apiReducer from './key';
 import ownedStockReducer from './ownedstocks';
 import session from './session'
 import searchReducer from './stocks';
 import transactionsReducer from './transactions';
 import transfersReducer from './transfer';
+import usersReducer from './users';
 import watchlistsReducer from './watchlists';
 import watchliststocksReducer from './watchliststocks';
 
@@ -18,6 +23,11 @@ const rootReducer = combineReducers({
   owned: ownedStockReducer, 
   lists: watchlistsReducer,
   stocks: watchliststocksReducer,
+  friends: friendsReducer,
+  friendrequests: friendRequestReducer,
+  friendrequestsfrom: friendRequestFromReducer,
+  users: usersReducer,
+  comments: commentsReducer,
 });
 
 

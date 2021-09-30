@@ -1,0 +1,79 @@
+.aboutDiv > .demobutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  width: 20vw;
+  background-color: white;
+  align-items: center;
+  border-radius: 5%;
+  border: 1px solid lightgrey;
+}
+
+.icons button {
+  outline: none;
+  color: white;
+  cursor: pointer;
+  background: none;
+  background-color: #00c805;
+  border: none;
+  border-radius: 10px;
+  height: 6vh;
+  width: 15vw;
+  margin-bottom: 2vh;
+}
+
+.icons > div {
+  color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: flex-start;
+  width: 15vw;
+  margin-bottom: 4vh;
+}
+
+.icons > a {
+  color: none;
+  background-color: none;
+  text-decoration: none;
+}
+
+.icons > a:link {
+  text-decoration: none;
+}
+
+.icons > a:visited {
+  text-decoration:none;
+}
+
+.icons > * {
+  color: none;
+  text-decoration: none;
+}
+
+.about-me-text {
+    color: black;
+    font-size: 16px;
+    margin-top: 1.5vh;
+}
+
+.demobutton {
+  border: none;
+  text-decoration: none;
+  background-color: white;
+  /* color: none; */
+  cursor: pointer;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.25px;
+  margin: 0;
+  color: rgb(0,0,0);
+}

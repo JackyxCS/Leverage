@@ -18,7 +18,8 @@ def validation_errors_to_error_messages(validation_errors):
 @list_routes.route('/', methods=['GET'])
 @login_required
 def getAllLists():
-    watchlists = WatchList.query.all()
+    userId = current_user.id
+    watchlists = WatchList.query.filter(WatchList.userId == userId).all()
     return {'watchlists': [watchlist.to_dict() for watchlist in watchlists]}
 
 # creates a new list for a particular user

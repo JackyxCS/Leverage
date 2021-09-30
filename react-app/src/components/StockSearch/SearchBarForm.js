@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getKey } from '../store/key';
-import { fetchStockData } from '../store/stocks';
+import { getKey } from '../../store/key';
+import { fetchStockData } from '../../store/stocks';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import styles from './SearchBarForm.module.css'
 
 const SearchBarForm = () => {
     const dispatch = useDispatch()
@@ -29,13 +32,29 @@ const SearchBarForm = () => {
         dispatch(getKey())
     }
 
-    document.body.addEventListener('click', function (e) {
-        let target = e.target;
-        if (target.id !== 'searchbox') {
-            setShowContainer(false)
-        }
-        e.stopPropagation()
-    });
+    // document.body.addEventListener('click', function (e) {
+    //     let target = e.target;
+    //     if (target.id !== 'searchbox') {
+    //         setShowContainer(false)
+    //         // setSearchInput('')
+    //     }
+    //     e.stopPropagation()
+    // });
+
+    useEffect(() => {
+        if (!showContainer) return;
+
+        const closeContainer = (e) => {
+            let target = e.target;
+            if (target.id !== 'searchbox') {
+                setShowContainer(false)
+            }
+        };
+
+        document.addEventListener('click', closeContainer);
+
+        return () => document.removeEventListener("click", closeContainer);
+    }, [showContainer]);
 
     let searchOutput
     if (showContainer === false || searchInput.length === 0) {
@@ -48,13 +67,15 @@ const SearchBarForm = () => {
         )
     } else if (results.length > 0) {
         searchOutput = (
-            <div id="search-container">
+            <div className={styles.searchcontainer} id="search-container">
                 {results && results.map((result) => {
                     return (
                         <div key={result.symbol}>
                             <NavLink onClick={resetSearch} to={`/stocks/${result.symbol.toLowerCase()}`}>
-                                <div>{result.symbol}</div>
-                                <div>{result.name}</div>
+                                <div className={styles.companyname}>
+                                    <div className={styles.symbol}>{result.symbol}</div>
+                                    <div>{result.name}</div>
+                                </div>
                             </NavLink>
                         </div>
                     )
@@ -64,9 +85,13 @@ const SearchBarForm = () => {
     }
 
     return (
-        <div id="search-div">
-            <div>search goes here</div>
+        <div className={styles.searchdiv} id="search-div">
+            <FontAwesomeIcon
+                className={styles.icon}
+                icon={faSearch}
+                style={{ transform: [{ rotateX: '180deg' }] }} />
             <input
+                className={styles.searchinput}
                 id="searchbox"
                 onChange={e => setSearchInput(e.target.value)}
                 onFocus={() => setShowContainer(true)}

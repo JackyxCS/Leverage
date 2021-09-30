@@ -1,1 +1,31 @@
 /* TODO Add site wide styles */
+
+* {
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* #root {
+    display: block;
+    height: 100%;
+} */
+
+
+/* body {
+    padding: 0;
+    margin: 0;
+} */
+
+.redpercent {
+    color: #FF5000;
+}
+
+.greenpercent {
+    color: #00C805;
+}
+
+/* .active {
+    border-bottom: 1px solid black;
+} */

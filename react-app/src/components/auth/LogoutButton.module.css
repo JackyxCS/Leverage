@@ -1,0 +1,14 @@
+.textdecoration {
+    text-decoration: none;
+    color: black;
+    border: none;
+    background-color: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.25px;
+    color: none;
+    background: none;
+    cursor: pointer;
+}

@@ -1,0 +1,66 @@
+.watchlistadd {
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 550;
+    justify-content: space-between;
+}
+
+.addlistbutton {
+    text-decoration: none;
+    color: black;
+    border: none;
+    background-color: none;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.25px;
+    color: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Styles for expanded add watchlist option */
+.expandedaddlist {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 550;
+    justify-content: space-between;
+}
+
+.expandedform {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1vh;
+}
+
+.expandedinput {
+    height: 3vh;
+    width: 8vw;
+    margin-top: 1vh;
+    display: flex;
+    /* padding-left: 2vw; */
+    /* justify-content: center; */
+    /* border-radius: 3px; */
+    text-align: center;
+}
+
+.expandedbutton {
+    height: 3vh;
+    width: 8vw;
+    margin-top: 0.5vh;
+    /* border-radius: 3px; */
+}

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-// import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import TransferForm from './components/TransferForm';
-import BuyStockForm from './components/BuyStockForm';
-import StockPageGraph from './components/StockPageGraph';
+import TransferForm from './components/Transfers/TransferForm';
 import { getKey } from './store/key';
-import StockDetails from './components/StockDetails';
-import PortfolioPage from './components/PortfolioPage';
-import { fetchOwnedStocks } from './store/ownedstocks';
-import WatchListForm from './components/WatchListForm';
-import WatchListDisplay from './components/WatchListDisplay';
-import { fetchLists } from './store/watchlists';
-import WatchListStock from './components/WatchListStock';
+import FriendsDisplay from './components/FriendsDisplay';
+import FriendRequestsTo from './components/FriendRequestsTo';
+import FriendRequestsFrom from './components/FriendRequestsFrom';
+import FriendRequestForm from './components/FriendRequestForm';
+import FriendsFeed from './components/FriendsFeed';
+import SingleTransaction from './components/SingleTransaction';
+import Homepage from './components/Homepage/Homepage';
+import HomepageNav from './components/Homepage/HomepageNav';
+import LoginContainer from './components/auth/LoginContainer';
+import SignupContainer from './components/auth/SignupContainer';
+import PortfolioContainer from './components/PortfolioPage/PortfolioContainer';
+import SingleStockPage from './components/StockDetails/SingleStockPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,8 +28,16 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(getKey())
-      await dispatch(fetchOwnedStocks())
-      await dispatch(fetchLists())
+      // await dispatch(fetchOwnedStocks())
+      // await dispatch(fetchUsers())
+      // await dispatch(fetchLists())
+      // await dispatch(fetchFriends())
+      // await dispatch(fetchFriendRequests())
+      // await dispatch(fetchTransactions())
+      // await dispatch(fetchComments())
+      // else if (!user) {
+      //   history.push('/')
+      // }
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -40,45 +48,47 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/' exact={true}>
-          <h1>Home page placeholder</h1>
+          <HomepageNav />
+          <Homepage />
         </Route>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <LoginContainer />
         </Route>
         <Route path='/signup' exact={true}>
-          <SignUpForm />
+          <SignupContainer />
         </Route>
 
-
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute> */}
         <ProtectedRoute path='/profile' exact={true} >
+          <NavBar />
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/transfers'>
-          <h1>Transfers</h1>
+          <NavBar />
           <TransferForm />
         </ProtectedRoute>
         <ProtectedRoute path='/portfolio' exact={true} >
-          <h1>Portfolio Page</h1>
-          <PortfolioPage />
-          <WatchListForm />
-          <WatchListDisplay />
+          <NavBar />
+          <PortfolioContainer />
         </ProtectedRoute>
         <ProtectedRoute path='/stocks/:stockticker' exact={true} >
-          <h1>this is a ticker</h1>
-          <h1>Buy form here</h1>
-          <BuyStockForm />
-          <StockPageGraph />
-          <WatchListStock />
-          <StockDetails />
+          <NavBar />
+          <SingleStockPage />
         </ProtectedRoute>
         <ProtectedRoute path='/social' exact={true}>
+          <NavBar />
           <div>This is the social path</div>
+          <FriendRequestForm />
+          <FriendsDisplay />
+          <FriendRequestsTo />
+          <FriendRequestsFrom />
+          <FriendsFeed />
+        </ProtectedRoute>
+        <ProtectedRoute path='/social/:transactionId' exact={true}>
+          <NavBar />
+          <div>This is a transaction path where comments will be populated</div>
+          <SingleTransaction />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

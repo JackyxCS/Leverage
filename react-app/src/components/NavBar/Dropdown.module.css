@@ -1,0 +1,22 @@
+.dropdown {
+  position: absolute;
+  background-color: white;
+  top: 10vh;
+  padding-left: 2vw;
+  border: 1px solid lightgrey;
+  height: 20vh;
+  width: 10vw;
+  opacity: 0.9;
+  z-index: 1;
+  right: 1vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06);
+}
+
+.textdecoration {
+    text-decoration: none;
+    color: black;
+}

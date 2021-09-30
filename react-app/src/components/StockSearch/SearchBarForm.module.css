@@ -1,0 +1,64 @@
+.searchdiv {
+    border: 1px solid lightgrey;
+    /* box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06); */
+    height: 4vh;
+    width: 20vw;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.searchdiv:hover {
+    box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06);
+}
+
+.searchdiv:focus {
+    outline: none;
+}
+
+.searchinput {
+    border: none;
+    margin-left: 0.5vw;
+    width: 20vw;
+}
+
+.searchinput:focus{
+    outline: none;
+}
+
+.icon {
+    padding-left: 0.1vw;
+    margin-left: 0.3vw;
+}
+
+.searchcontainer {
+    position: absolute;
+    background-color: white;
+    top: 8vh;
+    padding-left: 1vw;
+    border: 1px solid lightgrey;
+    height: 30vh;
+    width: 20vw;
+    opacity: 0.9;
+    z-index: 1;
+    /* right: 1vw; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    /* box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06); */
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.companyname {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.symbol {
+    margin-right: 2vw;
+}

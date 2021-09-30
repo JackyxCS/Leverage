@@ -1,0 +1,172 @@
+.portfoliopage {
+    display: flex;
+    flex-grow: 1;
+    margin-left: calc(100vw - 100%);
+    margin-right: 0px;
+    margin-top: 2vh;
+    /* top: 10vh; */
+    /* position: absolute; */
+}
+
+.portfoliopage2 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 1036px;
+    margin-bottom: 64px;
+}
+
+.portfoliopage3 {
+    padding-top: 36px;
+    margin: 0 auto;
+    width: 1024px;
+    display: block;
+}
+
+.portfoliopage4 {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -6px;
+}
+
+.sidebar {
+    display: block;
+    /* padding-left: 6px; */
+    padding-right: 6px;
+    margin-right: 0;
+    margin-left: 10vw;
+    flex: 0 0 27.8%;
+    box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06);
+    overflow: hidden;
+    height: 50vh;
+    border-radius: 3px;
+}
+
+.sidebar2 {
+    margin-right: -24px;
+    position: sticky;
+    margin-bottom: -64px;
+    height: 50vh;
+    /* padding-left: 2vw; */
+    padding-top: 2vh;
+    overflow-y: scroll;
+}
+
+.portfoliovalue {
+    font-size: 32px;
+    font-weight: 550;
+    margin-bottom: 1vh;
+}
+
+.portfoliochange {
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    letter-spacing: -0.3px;
+}
+
+.portfoliotime {
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    letter-spacing: -0.3px;
+    margin-top: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid lightgray;
+}
+
+.buyingpower {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 3.5vh;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+    margin-bottom: 3.5vh;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.news {
+    font-size: 20px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    padding-bottom: 3.5vh;
+    border-bottom: 1px solid lightgray;
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.newstext {
+    font-size: 20px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    padding-bottom: 3.5vh;
+    border-bottom: 1px solid lightgray;
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stockstext {
+    font-size: 16px;
+    font-weight: 550;
+    border-bottom: 1px solid lightgray;
+    padding-left: 1.5vw;
+    padding-bottom: 2vh;
+}
+
+.ownedtickers {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 2vh;
+    padding-bottom: 0.5vh;
+    border-bottom: 1px solid lightgray;
+}
+
+.leftcontainer {
+    /* flex: 0 0 62.2%; */
+    flex: 0 0 66.6666666667%;
+    min-width: 0px;
+    width: auto;
+    display: block;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.image {
+    max-width: 100%;
+}
+
+.eachnewsarticle {
+    margin-top: 2vh;
+    font-size: 14px;
+    font-weight: 550;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    align-items: flex-start;
+}
+
+.newssource {
+    padding-bottom: 2vh;
+    font-size: 14px;
+}
+
+.newsheadline {
+    padding-bottom: 2vh;
+    font-size: 16px;
+}
+
+.newssummary {
+    color: grey;
+    font-size: 14px;
+    font-weight: normal;
+}

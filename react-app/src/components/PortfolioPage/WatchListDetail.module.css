@@ -1,0 +1,102 @@
+.watchlistscontainer {
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid lightgray;
+    /* display: flex; */
+    align-items: center;
+    /* font-size: 16px;
+    font-weight: 550; */
+    justify-content: space-between;
+}
+
+.eachliststock {
+    padding-bottom: 1.5vh;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.eachlist {
+    display: flex;
+    padding-bottom: 2vh;
+    justify-content: space-between;
+}
+
+.pencilbutton {
+    text-decoration: none;
+    color: black;
+    border: none;
+    background-color: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.25px;
+    color: none;
+    background: none;
+    cursor: pointer;
+    padding-right: 1vw;
+}
+
+.trashbutton {
+    text-decoration: none;
+    color: black;
+    border: none;
+    background-color: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.25px;
+    color: none;
+    background: none;
+    cursor: pointer;
+}
+
+.liststocks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deletebutton {
+    text-decoration: none;
+    color: black;
+    border: none;
+    background-color: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.25px;
+    color: none;
+    background: none;
+    cursor: pointer;
+    /* padding-right: 1vw; */
+}
+
+.deletediv {
+    display: flex;
+    justify-content: center;
+}
+
+.listtitle {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+/* .detaildiv {
+
+} */
+
+.navlink {
+    text-decoration: none;
+    color: black;
+}
+
+.nowatchlists {
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    margin-top: 2vh;
+}
