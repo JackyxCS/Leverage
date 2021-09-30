@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import { fetchComments } from '../store/comments';
-import { createUpdate } from '../store/comments';
-import DeleteCommentModal from './DeleteCommentModal/index';
+import { fetchComments } from '../../store/comments';
+import { createUpdate } from '../../store/comments';
+import DeleteCommentModal from '../DeleteCommentModal/index';
+import styles from './Social.module.css'
 
 const CommentDetail = ({ comment }) => {
     const dispatch = useDispatch();
@@ -83,16 +84,18 @@ const CommentDetail = ({ comment }) => {
             )
         } else {
             return (
-                <div>
-                    <div>{comment.comment}</div>
-                    <div>{comment.user_details.username}</div>
-                    <div>
+                <div className={styles.commentdivform}>
+                    <div className={styles.friendusername}>{comment.comment}</div>
+                    <div className={styles.friendusername}>{comment.user_details.username}</div>
+                    <div className={styles.commentbuttondiv}>
                         <button
+                            className={styles.commenteditbutton}
                             onClick={handleEditCommentClick}
                         >
                             Edit Comment
                         </button>
                         <button
+                            className={styles.commenteditbuttonred}
                             onClick={handleDeleteCommentClick}
                         >
                             Delete Comment
@@ -104,9 +107,9 @@ const CommentDetail = ({ comment }) => {
         }
     } else {
         return (
-            <div>
-                <div>{comment.comment}</div>
-                <div>{comment?.user_details?.username}</div>
+            <div className={styles.commentdivform}>
+                <div className={styles.friendusername}>{comment.comment}</div>
+                <div className={styles.friendusername}>{comment?.user_details?.username}</div>
             </div>
         );
 

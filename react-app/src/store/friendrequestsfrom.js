@@ -19,9 +19,9 @@ const friendRequestFromReducer = (state = initialState, action) => {
         case SET_FRIEND_REQUESTS_FROM: {
             const newState = []
             const arr = action.friendRequests
-            // console.log(arr, "requestsarr")
+            console.log(arr, "requestsarr")
             const friend_arr = Object.values(arr)
-            // console.log(friend_arr, 'makes in thunk')
+            console.log(friend_arr, 'makes in thunk')
             for (let i = 0; i < friend_arr.length; i++) {
                 newState.push(Number(friend_arr[i]))
             }

@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { useHistory } from 'react-router';
 // import { useParams } from 'react-router-dom';
-import { fetchFriends } from '../store/friends';
-import { authenticate } from '../store/session';
-import { fetchUsers } from '../store/users';
+import { fetchFriends } from '../../store/friends';
+import { authenticate } from '../../store/session';
+import { fetchUsers } from '../../store/users';
 import Friends from './Friends';
+import styles from './Social.module.css';
 
 const FriendsDisplay = () => {
     const dispatch = useDispatch()
@@ -18,36 +19,26 @@ const FriendsDisplay = () => {
         })();
     }, [dispatch])
 
-    // const history = useHistory()
     const user = useSelector(state => state.session.user)
     const { id: userId } = user
     const users = useSelector(state => Object.values(state.users))
     const friends = useSelector(state => Object.values(state?.friends))
     let users_friends = users?.filter(user => friends.includes(user.id) && user.id !== userId)
-    console.log('users', users)
-    console.log('usersfriends', users_friends)
-    // const users_friends = users.filter(user => friends.includes(user.id) && user.id !== userId)
-    // console.log(users_friends, 'usersfriends')
-
-    // useEffect(() => {
-    //     let users_friends = users.filter(user => friends.includes(user.id) && user.id !== userId)
-    //     setUserFriends(users_friends)
-    //     console.log(users_friends, 'usersfriends')
-    // }, [friends])
 
     if (users_friends.length > 0) {
         return (
-            <>
-                <div>rendered friends
+            <div className={styles.currentfriends}>
+                <div>My Friends</div>
+                <div className={styles.expandedform}>
                     {users_friends.map((friend) => {
                         return <Friends key={friend.id} friend={friend} />
                     })}
                 </div>
-            </>
+            </div>
         )
     } else {
         return (
-            <div>You have no friends.</div>
+            <></>
         )
     }
 
