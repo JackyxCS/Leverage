@@ -26,7 +26,6 @@ def getAllFriendRequests():
         request_obj = {}
         request_obj[request[0]] = request[1]
         returnArr.append(request_obj)
-    print(returnArr, 'RETURNARR<<<<<<<')
     return jsonify({'requests': returnArr})
 
 # adds friend request
@@ -39,7 +38,6 @@ def addFriendRequest():
     user = User.query.filter(User.id == userId).first()
     requestee = User.query.filter(User.id == requesteeId).first()
     user.friend_requests_to.append(requestee)
-    # print(user.friend_requests_to, "REQUESTS TO")
     requestee.friend_requests_from.append(user)
     db.session.commit()
     return 'added'
@@ -49,7 +47,6 @@ def addFriendRequest():
 @login_required
 def deleteFriendRequest(friendRequestId):
     userId = current_user.id
-    print('in delete request route')
     requestee = User.query.filter(User.id == friendRequestId).first()
     requester = User.query.filter(User.id == userId).first()
     # deleting one side of the relationship deletes the entire row from the table
@@ -57,6 +54,5 @@ def deleteFriendRequest(friendRequestId):
         requester.friend_requests_to.remove(requestee)
     elif (requestee in requester.friend_requests_from):
         requester.friend_requests_from.remove(requestee)
-    # requestee.friend_requests_from.remove(requester)
     db.session.commit()
     return 'deleted'

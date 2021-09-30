@@ -9,7 +9,6 @@ import styles from './WatchListDetail.module.css'
 
 const DeleteStockForm = ({ stock }) => {
     const dispatch = useDispatch();
-    // console.log(stock)
     const handleStockDelete = async () => {
         dispatch(deleteStock(stock.id)).then(() => {
             dispatch(fetchStocks())
@@ -18,7 +17,6 @@ const DeleteStockForm = ({ stock }) => {
 
     return (
         <div className={styles.deletediv}>
-            {/* <div>{stock.ticker.toUpperCase()}</div> */}
             <button className={styles.deletebutton} onClick={handleStockDelete}>
                 <FontAwesomeIcon
                     icon={faTimesCircle}

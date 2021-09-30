@@ -37,8 +37,8 @@ const LoginForm = () => {
 
   const demoLogin = async (e) => {
     e.preventDefault()
-    setEmail('demo@aa.io')
-    setPassword('password')
+    const email = 'demo@aa.io'
+    const password = 'password'
     const data = await dispatch(login(email, password));
     if (data === null) {
       await dispatch(fetchOwnedStocks())

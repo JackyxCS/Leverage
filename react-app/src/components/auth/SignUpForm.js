@@ -25,7 +25,6 @@ const SignUpForm = () => {
     e.preventDefault();
 
     const data = await dispatch(signUp(username, email, password, repeatPassword));
-    console.log(data, 'DATAAAA')
     if (data) {
       setErrors(data)
     }
@@ -37,7 +36,6 @@ const SignUpForm = () => {
       await dispatch(fetchFriendRequests())
       await dispatch(fetchTransactions())
       await dispatch(fetchComments())
-      // history.push('/portfolio')
     }
   };
 

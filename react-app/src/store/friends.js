@@ -61,26 +61,12 @@ const friendsReducer = (state = initialState, action) => {
         case SET_FRIENDS: {
             const newState = []
             const arr = action.friends
-            console.log(arr, "arr")
             const friend_arr = Object.keys(arr)
-            // console.log(friend_arr, 'makes in thunk')
             for (let i = 0; i < friend_arr.length; i++) {
                 newState.push(parseInt(friend_arr[i]))
             }
             return newState
         }
-        // case ADD_FRIEND: {
-        //     const newState = { ...state }
-        //     newState[action.friend.id] = action.friend
-        //     return newState
-        // }
-        // case REMOVE_FRIEND: {
-        //     const newState = [...state]
-        //     console.log('removenewstate', newState)
-        //     newState.splice(newState.indexOf(action.friendId), 1)
-        //     console.log('afternewstate', newState)
-        //     return newState
-        // }
         default:
             return state;
     }

@@ -21,11 +21,8 @@ const WatchListDetail = ({ list }) => {
     const history = useHistory();
     const user = useSelector(state => state.session.user);
     const { id: userId } = user
-    // console.log(list)
     const stocks = useSelector(state => Object.values(state.stocks))
-    // console.log(stocks)
     const filtered_stocks = stocks.filter(stock => Number(stock.watchListId) === Number(list.id))
-    // console.log(filtered_stocks, 'filtered_stocks')
 
     const [showEditModal, setShowEditModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)

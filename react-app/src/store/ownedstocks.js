@@ -20,7 +20,6 @@ export const fetchOwnedStocks = () => async (dispatch) => {
             ownedStock[ticker] += parseFloat(trans["trans_quantity"])
         }
     }
-    // console.log(ownedStock)
     dispatch(setOwnedStocks(ownedStock))
     return ownedStock
 }

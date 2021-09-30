@@ -87,5 +87,4 @@ def react_root(path):
 
 @app.route('/api/key', methods=["POST"])
 def getKey():
-    # print('here??????????')
     return {'stockAPIKey': os.environ.get('STOCK_API_KEY')}

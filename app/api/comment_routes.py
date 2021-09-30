@@ -24,7 +24,6 @@ def getAllComments():
 @comment_routes.route('/', methods=['POST'])
 def postComment():
     data = request.get_json()["comment"]
-    # print(data, '<<<<<<<<<<<<<<<DATABACK')
     userId = data["userId"]
     transactionId = data["transactionId"]
     comment = data["comment"]

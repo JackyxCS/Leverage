@@ -71,7 +71,6 @@ const PortfolioPage = () => {
                         graphArray[0].average)
                     setStockPercentChange((graphArray[graphArray.length - 1].average /
                         graphArray[0].average - 1) * 100)
-                    console.log(graphObject[0], 'object[0]')
                 }
             )
     }, [dispatch, key, ownedStocks, user])

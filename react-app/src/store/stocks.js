@@ -12,7 +12,6 @@ const setSearch = (results) => ({
 // fetches all stock tickers and company names that match search input
 // storing in redux store
 export const fetchStockData = (key, searchInput) => async (dispatch) => {
-    console.log('here')
     const res = await fetch(`https://cloud.iexapis.com/stable/ref-data/iex/symbols?token=${key}`)
     const json = await res.json()
     let filtered = json.filter(value => value["symbol"].includes(searchInput.toUpperCase()) ||
