@@ -74,7 +74,7 @@ const PortfolioPage = () => {
                     console.log(graphObject[0], 'object[0]')
                 }
             )
-    }, [dispatch, key, ownedStocks, user, graphObject])
+    }, [dispatch, key, ownedStocks, user])
 
     const updatePriceAction = (data) => {
         if (data === null || !data.activePayload || data.activePayload === undefined) return;
@@ -158,16 +158,16 @@ const PortfolioPage = () => {
                 <div className={styles.newstext}>News</div>
                 <div className={styles.news}>
                     <div>
-                        <a className={styles.eachnewsarticle} href={homePageNews[0].url} alt="" target="_blank" rel="noreferrer">
+                        <a className={styles.eachnewsarticle} href={homePageNews[0]?.url} alt="" target="_blank" rel="noreferrer">
                             <div>
-                                <div className={styles.newssource}>{homePageNews[0].source}</div>
-                                <div className={styles.newsheadline}>{homePageNews[0].headline}</div>
-                                <div className={styles.newssummary}>{homePageNews[0].summary}</div>
+                                <div className={styles.newssource}>{homePageNews[0]?.source}</div>
+                                <div className={styles.newsheadline}>{homePageNews[0]?.headline}</div>
+                                <div className={styles.newssummary}>{homePageNews[0]?.summary}</div>
                             </div>
                             {/* <div>{Date((homePageNews[0].datetime))}</div> */}
                             {/* <div>{homePageNews[0].provider}</div> */}
                             <div>
-                                <img className={styles.image} src={homePageNews[0].image} alt="" />
+                                <img className={styles.image} src={homePageNews[0]?.image} alt="" />
                             </div>
                         </a>
                     </div>

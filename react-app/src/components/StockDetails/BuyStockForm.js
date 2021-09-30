@@ -34,7 +34,7 @@ const BuyStockForm = () => {
             .then((res) => {
                 setTransactionPrice(res.latestPrice)
             })
-    })
+    }, [dispatch, key, stockticker])
 
     useEffect(() => {
         const errors = [];
@@ -43,7 +43,7 @@ const BuyStockForm = () => {
         if (activeForm === "SELL" && (shares > ownedShares)) errors.push("You do not have enough shares")
         if (transactionPrice === 0) errors.push("Please wait until market hours")
         setValidationErrors(errors)
-    }, [shares, activeForm, transactionPrice, user, ownedShares])
+    }, [shares, activeForm, transactionPrice, user])
 
     useEffect(() => {
         dispatch(fetchOneStockTransactions(stockticker))
