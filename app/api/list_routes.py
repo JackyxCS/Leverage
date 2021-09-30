@@ -63,7 +63,6 @@ def updateList(listId):
 @login_required
 def deleteList(listId):
     delete_list = WatchList.query.filter(WatchList.id == listId).first()
-    # print(delete_list, "DELETELIST")
     db.session.delete(delete_list)
     db.session.commit()
     return {'deleted_list': {

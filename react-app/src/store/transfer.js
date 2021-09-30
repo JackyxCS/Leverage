@@ -38,7 +38,6 @@ export const fetchTransfers = () => async (dispatch) => {
 }
 
 export const makeTransfer = (transfer) => async (dispatch) => {
-    // console.log('in thunk')
     const res = await fetch('/api/transfers/', {
         method: 'POST',
         headers: {

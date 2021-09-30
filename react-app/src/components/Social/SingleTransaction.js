@@ -16,12 +16,10 @@ const SingleTransaction = () => {
     const user = useSelector(state => state.session.user)
     const { id: userId } = user
     const transactions = useSelector(state => Object.values(state?.transactions))
-    console.log(transactions, 'transactions')
     const transaction = transactions?.filter(transaction => Number(transaction.id) === Number(transactionId))[0]
     const comments = useSelector(state => Object.values(state.comments))
     const transactionComments = comments.filter(comment => Number(comment.transactionId) === Number(transactionId))
     // const transaction = transactions?.filter((transaction) => +transaction.id == transactionId)
-    console.log(transaction, 'transaction')
 
     useEffect(() => {
         dispatch(fetchAllTransactions())

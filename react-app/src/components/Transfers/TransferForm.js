@@ -11,7 +11,6 @@ const TransferForm = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user)
     const { id: userId } = user
-    // console.log(user)
 
     const [transferType, setTransferType] = useState('initial')
     const [amount, setAmount] = useState(0)
@@ -32,8 +31,6 @@ const TransferForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(amount, "amount")
-        console.log(user.balance, "userbal")
 
         if (validationErrors > 0) return;
 

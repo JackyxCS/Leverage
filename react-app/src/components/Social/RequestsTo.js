@@ -5,12 +5,10 @@ import styles from './Social.module.css'
 
 const RequestsTo = ({ request }) => {
     const dispatch = useDispatch()
-    // console.log(request.id)
 
     const handleClick = async (e) => {
         await dispatch(deleteFriendRequest(request.id))
         await dispatch(fetchFriendRequests())
-        // console.log(request.id)
     }
 
     return (

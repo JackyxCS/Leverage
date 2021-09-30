@@ -7,11 +7,6 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import TransferForm from './components/Transfers/TransferForm';
 import { getKey } from './store/key';
-// import FriendsDisplay from './components/Social/FriendsDisplay';
-// import FriendRequestsTo from './components/FriendRequestsTo';
-// import FriendRequestsFrom from './components/FriendRequestsFrom';
-// import FriendRequestForm from './components/FriendRequestForm';
-// import FriendsFeed from './components/Social/FriendsFeed';
 import SingleTransaction from './components/Social/SingleTransaction';
 import Homepage from './components/Homepage/Homepage';
 import HomepageNav from './components/Homepage/HomepageNav';
@@ -29,16 +24,6 @@ function App() {
     (async () => {
       await dispatch(authenticate());
       await dispatch(getKey())
-      // await dispatch(fetchOwnedStocks())
-      // await dispatch(fetchUsers())
-      // await dispatch(fetchLists())
-      // await dispatch(fetchFriends())
-      // await dispatch(fetchFriendRequests())
-      // await dispatch(fetchTransactions())
-      // await dispatch(fetchComments())
-      // else if (!user) {
-      //   history.push('/')
-      // }
       setLoaded(true);
     })();
   }, [dispatch]);

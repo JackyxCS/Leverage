@@ -21,12 +21,10 @@ def validation_errors_to_error_messages(validation_errors):
 def getAllFriends():
     userId = current_user.id
     all_friends = db.session.query(friends).all()
-    print(all_friends, "<<<<<FRIENDS!!!!")
     friend_obj = {}
     for friend in all_friends:
         if (friend[0] == userId):
             friend_obj[friend[1]] = friend[0]
-    # print(friend_obj, '<<<<<<<FRIEND OBJ') 
     return {'friends': friend_obj}
 
 # adds friend on both sides of relationship

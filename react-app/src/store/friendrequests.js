@@ -32,7 +32,6 @@ const removeFriendRequest = (friendRequestId) => ({
 export const fetchFriendRequests = () => async (dispatch) => {
     const res = await fetch('/api/friendrequests/')
     const friendRequests = await res.json()
-    console.log(friendRequests.requests, "allfriendrequests")
     dispatch(setFriendRequests(friendRequests.requests))
 }
 
@@ -73,31 +72,9 @@ const friendRequestReducer = (state = initialState, action) => {
         case SET_FRIEND_REQUESTS: {
             const newState = []
             const arr = action.friendRequests
-            // console.log(arr, "requestsarr")
-            // const friend_arr = Object.values(arr)
-            // // console.log(friend_arr, 'makes in thunk')
-            // for (let i = 0; i < friend_arr.length; i++) {
-            //     newState.push(friend_arr[i])
-            // }
             newState.push(arr)
             return newState
         }
-        // case SET_FRIEND_REQUESTS_FROM: {
-        //     const newState = []
-        //     const arr = action.friendRequests
-        //     console.log(arr, "requestsarr")
-        //     const friend_arr = Object.keys(arr)
-        //     console.log(friend_arr, 'makes in thunk')
-        //     for (let i = 0; i < friend_arr.length; i++) {
-        //         newState.push(friend_arr[i])
-        //     }
-        //     return newState
-        // }
-        // case ADD_FRIEND_REQUEST: {
-        //     const newState = { ...state }
-        //     newState[action.friendRequest.id] = action.friendRequest
-        //     return newState
-        // }
         case REMOVE_FRIEND_REQUEST: {
             const newState = [...state]
             newState.splice(newState.indexOf(action.friendRequestId), 1)

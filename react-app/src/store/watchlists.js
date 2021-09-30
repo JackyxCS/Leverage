@@ -45,7 +45,6 @@ export const postList = (watchlist) => async (dispatch) => {
 
     if (res.ok) {
         const newList = await res.json();
-        // console.log(newList)
         dispatch(addList(newList));
         return newList
     }

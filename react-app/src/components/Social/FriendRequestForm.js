@@ -37,8 +37,6 @@ const FriendRequestForm = () => {
             usernames.push(users[i].username)
         }
 
-        // console.log(usernames)
-
         if (!usernames.includes(search)) {
             setSearch('')
             setMessage('Username not found')

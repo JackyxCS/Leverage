@@ -37,7 +37,6 @@ def makeTransfers():
         transfer_amount = form.data["amount"]
 
         user = User.query.get(userId)
-        print(transfer_type, 'transfer type')
         # update user's balance upon deposit or withdrawal
         if transfer_type == "DEPOSIT":
             user.balance = user.balance + transfer_amount

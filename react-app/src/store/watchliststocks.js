@@ -42,7 +42,6 @@ export const postStock = (stock) => async (dispatch) => {
 
     if (res.ok) {
         const newStock = await res.json()
-        console.log(newStock, 'newStock')
         dispatch(addStock(newStock.stock))
         return newStock
     }
