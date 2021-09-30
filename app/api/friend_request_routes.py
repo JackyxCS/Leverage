@@ -20,11 +20,14 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def getAllFriendRequests():
     all_requests = db.session.query(friend_requests).all()
-    # requester, requestee in tuple
-    request_obj = {}
+    # requester, requestee in tuple (3, 1)
+    returnArr = []
     for request in all_requests:
+        request_obj = {}
         request_obj[request[0]] = request[1]
-    return {'requests': request_obj}
+        returnArr.append(request_obj)
+    print(returnArr, 'RETURNARR<<<<<<<')
+    return jsonify({'requests': returnArr})
 
 # adds friend request
 @friend_request_routes.route('/', methods=['POST'])

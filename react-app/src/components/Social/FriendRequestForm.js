@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
-import { fetchFriendRequests, postFriendRequest } from '../store/friendrequests';
-import { fetchUsers } from '../store/users';
+import { fetchFriendRequests, postFriendRequest } from '../../store/friendrequests';
+import { fetchUsers } from '../../store/users';
+import styles from './Social.module.css'
 
 const FriendRequestForm = () => {
     const dispatch = useDispatch()
@@ -39,7 +40,6 @@ const FriendRequestForm = () => {
         // console.log(usernames)
 
         if (!usernames.includes(search)) {
-            console.log('here')
             setSearch('')
             setMessage('Username not found')
         }
@@ -59,21 +59,26 @@ const FriendRequestForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                placeholder={message}
-                type="text"
-                name="search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                autoComplete='off'
-            />
-            <button
-                type="submit"
-            // disabled={validationErrors.length > 0}
-            >SEND
-            </button>
-        </form>
+        <div className={styles.formelements}>
+            <div>Find Friends</div>
+            <form className={styles.expandedform} onSubmit={handleSubmit}>
+                <input
+                    className={styles.expandedinput}
+                    placeholder={message}
+                    type="text"
+                    name="search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    autoComplete='off'
+                />
+                <button
+                    className={styles.expandedbutton}
+                    type="submit"
+                // disabled={validationErrors.length > 0}
+                >SEND
+                </button>
+            </form>
+        </div>
     )
 
 }

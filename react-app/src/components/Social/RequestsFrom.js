@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteFriendRequest, fetchFriendRequests } from '../store/friendrequests';
-import { fetchFriends, postFriend } from '../store/friends';
+import { deleteFriendRequest, fetchFriendRequests } from '../../store/friendrequests';
+import { fetchFriends, postFriend } from '../../store/friends';
+import styles from './Social.module.css'
 
 const RequestsFrom = ({ request }) => {
     const dispatch = useDispatch()
@@ -20,9 +21,10 @@ const RequestsFrom = ({ request }) => {
     }
 
     return (
-        <div>{request.username}
-            <button onClick={handleAccept}>ACCEPT</button>
-            <button onClick={handleDelete}>DELETE</button>
+        <div className={styles.expandedform}>
+            <div className={styles.friendusername}>{request.username}</div>
+            <button className={styles.expandedbutton} onClick={handleAccept}>ACCEPT</button>
+            <button className={styles.expandedbuttonred} onClick={handleDelete}>DELETE</button>
         </div>
     )
 }

@@ -32,6 +32,7 @@ const removeFriendRequest = (friendRequestId) => ({
 export const fetchFriendRequests = () => async (dispatch) => {
     const res = await fetch('/api/friendrequests/')
     const friendRequests = await res.json()
+    console.log(friendRequests.requests, "allfriendrequests")
     dispatch(setFriendRequests(friendRequests.requests))
 }
 
@@ -98,7 +99,7 @@ const friendRequestReducer = (state = initialState, action) => {
         //     return newState
         // }
         case REMOVE_FRIEND_REQUEST: {
-            const newState = [ ...state ]
+            const newState = [...state]
             newState.splice(newState.indexOf(action.friendRequestId), 1)
             return newState
         }

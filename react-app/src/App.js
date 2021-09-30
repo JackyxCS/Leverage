@@ -7,18 +7,19 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import TransferForm from './components/Transfers/TransferForm';
 import { getKey } from './store/key';
-import FriendsDisplay from './components/FriendsDisplay';
-import FriendRequestsTo from './components/FriendRequestsTo';
-import FriendRequestsFrom from './components/FriendRequestsFrom';
-import FriendRequestForm from './components/FriendRequestForm';
-import FriendsFeed from './components/FriendsFeed';
-import SingleTransaction from './components/SingleTransaction';
+// import FriendsDisplay from './components/Social/FriendsDisplay';
+// import FriendRequestsTo from './components/FriendRequestsTo';
+// import FriendRequestsFrom from './components/FriendRequestsFrom';
+// import FriendRequestForm from './components/FriendRequestForm';
+// import FriendsFeed from './components/Social/FriendsFeed';
+import SingleTransaction from './components/Social/SingleTransaction';
 import Homepage from './components/Homepage/Homepage';
 import HomepageNav from './components/Homepage/HomepageNav';
 import LoginContainer from './components/auth/LoginContainer';
 import SignupContainer from './components/auth/SignupContainer';
 import PortfolioContainer from './components/PortfolioPage/PortfolioContainer';
 import SingleStockPage from './components/StockDetails/SingleStockPage';
+import SocialContainer from './components/Social/SocialContainer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -78,16 +79,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/social' exact={true}>
           <NavBar />
-          <div>This is the social path</div>
-          <FriendRequestForm />
-          <FriendsDisplay />
-          <FriendRequestsTo />
-          <FriendRequestsFrom />
-          <FriendsFeed />
+          <SocialContainer />
         </ProtectedRoute>
         <ProtectedRoute path='/social/:transactionId' exact={true}>
           <NavBar />
-          <div>This is a transaction path where comments will be populated</div>
           <SingleTransaction />
         </ProtectedRoute>
       </Switch>
