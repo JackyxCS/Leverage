@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
-import { getKey } from '../store/key';
-import { fetchLists, postList } from '../store/watchlists';
+import { getKey } from '../../store/key';
+import { fetchLists, postList } from '../../store/watchlists';
+import styles from './WatchListForm.module.css'
 
 const WatchListForm = () => {
     const dispatch = useDispatch()
@@ -41,37 +42,39 @@ const WatchListForm = () => {
     let watchlist
     if (watchListToggle) {
         watchlist = (
-            <>
-                <div>
-                    <div>Lists</div>
-                    <button
-                        onClick={() => setWatchListToggle(true)}
-                    >+
-                    </button>
-                </div>
-                <form onSubmit={handleSubmit}>
+            <div className={styles.expandedaddlist}>
+                <div>Lists</div>
+                {/* <button
+                    className={styles.addlistbutton}
+                    onClick={() => setWatchListToggle(true)}
+                >+
+                </button> */}
+                <form className={styles.expandedform} onSubmit={handleSubmit}>
                     <input
+                        className={styles.expandedinput}
                         placeholder="List Name"
                         name="watchlist"
                         value={watchList}
                         onChange={(e) => setWatchList(e.target.value)}
                     />
                     <button
+                        className={styles.expandedbutton}
                         type="submit"
                         disabled={validationErrors.length > 0}
                     >
                         Create List
                     </button>
                 </form>
-                <button onClick={() => setWatchListToggle(false)}>
-                    cancel
+                <button className={styles.expandedbutton} onClick={() => setWatchListToggle(false)}>
+                    Cancel
                 </button>
-            </>)
+            </div>
+        )
     } else {
         watchlist = (
-            <div>
+            <div className={styles.watchlistadd}>
                 <div>Lists</div>
-                <button
+                <button className={styles.addlistbutton}
                     onClick={() => setWatchListToggle(true)}
                 >+
                 </button>
@@ -80,7 +83,7 @@ const WatchListForm = () => {
     }
 
     return (
-        <div>Watchlistform
+        <div>
             {watchlist}
         </div>
     )

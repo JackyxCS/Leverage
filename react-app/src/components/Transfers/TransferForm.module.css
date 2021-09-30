@@ -1,0 +1,63 @@
+.transferdiv {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 2vw;
+    margin-right: 0px;
+    margin-top: 5vh;
+    box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06);
+    width: 18vw;
+    height: 30vh;
+    justify-content: center;
+}
+
+.transferform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.selectelement {
+    margin-bottom: 2vh;
+    height: 4vh;
+    padding-left: 0.3vw;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.inputelement {
+    margin-bottom: 2vh;
+    height: 4vh;
+    padding-left: 0.3vw;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.transferbutton {
+    text-decoration: none;
+    background-color: none;
+    background: none;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    height: 4vh;
+    cursor: pointer;
+    width: 100%;
+    background-color: #00c805;
+    color: white;
+}
+
+.availablebalance {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 1.5vw;
+    padding-left: 1.5vw;
+    margin-top: 4vh;
+    align-items: center;
+    gap: 1vw;
+}
+
+.balancetext {
+    font-size: 16px;
+    font-weight: 700;
+}

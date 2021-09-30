@@ -1,0 +1,263 @@
+.singlestockpage1 {
+    display: flex;
+    flex-grow: 1;
+    margin-left: calc(100vw - 100%);
+    margin-right: 0px;
+    margin-top: 2vh;
+}
+
+.singlestockpage2 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 1036px;
+    margin-bottom: 64px;
+}
+
+.singlestockpage3 {
+    width: 100%;
+    display: block;
+}
+
+.singlestockpage4 {
+    padding-top: 36px;
+    margin: 0 auto;
+    width: 1024px;
+    display: block;
+}
+
+.singlestockpage5 {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -6px;
+}
+
+.column1 {
+    flex: 0 0 66.6666666667%;
+    display: block;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.column2 {
+    display: block;
+    /* padding-left: 6px; */
+    padding-right: 6px;
+    margin-right: 0;
+    margin-left: 10vw;
+    flex: 0 0 27.8%;
+    box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06);
+    overflow: hidden;
+    height: 40vh;
+    border-radius: 3px;
+}
+
+.subcolumn1 {
+    margin-right: -24px;
+    position: sticky;
+    margin-bottom: -64px;
+    height: 50vh;
+    /* padding-left: 2vw; */
+    padding-top: 2vh;
+    overflow-y: scroll;
+}
+
+.portfoliovalue {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 1vh;
+}
+
+.portfoliochange {
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    letter-spacing: -0.3px;
+}
+
+.portfoliotime {
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    letter-spacing: -0.3px;
+    margin-top: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid lightgray;
+}
+
+.headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 3.5vh;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+    margin-bottom: 3.5vh;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 3.5vh;
+    /* border-bottom: 1px solid lightgray; */
+    align-items: center;
+    margin-bottom: 3.5vh;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.8);
+}
+
+.companyinfo {
+    margin-bottom: 5vh;
+}
+
+.rowlabels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.labels {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+.details {
+    font-size: 16px;
+}
+
+.news {
+    font-size: 20px;
+    font-weight: 550;
+    margin-bottom: 3.5vh;
+    padding-bottom: 3.5vh;
+    border-bottom: 1px solid lightgray;
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.image {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.eachnewsarticle {
+    margin-top: 2vh;
+    font-size: 14px;
+    font-weight: 550;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+}
+
+.newssource {
+    padding-bottom: 2vh;
+    font-size: 14px;
+}
+
+.newsheadline {
+    padding-bottom: 2vh;
+    font-size: 16px;
+}
+
+.newssummary {
+    color: grey;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* .formdisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-right: 2vw;
+} */
+
+.activeform {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5vw;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 2vh;
+}
+
+.buttondiv {
+    cursor: pointer;
+}
+
+.buysellform {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    padding-top: 2vh;
+    padding-bottom: 0.5vh;
+    /* border-bottom: 1px solid lightgray; */
+}
+
+.formelements {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 2vh;
+    /* gap: 2vw; */
+    align-items: center;
+}
+
+.purchasebutton {
+    text-decoration: none;
+    background-color: none;
+    background: none;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    height: 5vh;
+    cursor: pointer;
+    width: 100%;
+    background-color: #00c805;
+    color: white;
+}
+
+/* .active {
+    border-bottom: 1px solid black;
+} */
+
+.sharesinput {
+    width: 4vw;
+    height: 4vh;
+    padding-left: 0.3vw;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.watchlistbuttondiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    /* width: 100%; */
+    margin-top: 2vh;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    /* width: 10vw; */
+}
+
+.successmessage {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    /* padding-top: 1.5vh; */
+}

@@ -28,3 +28,11 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+# @user_routes.route('/search')
+# @login_required
+# def searchUser():
+#     data = request.get_json()["searchInput"]
+#     string = data["search"]
+#     foundUser = User.query.filter(User.username == string).all()
+#     return {'user': {}}

@@ -26,7 +26,7 @@ def seed_users():
     # print(demo.friends, "demo's friends")
     # print(marnie.friends, "marnie's friends")
     # print(demo.friend_requests_to, "demos requests")
-    # print(bobbie.friend_requests_from, "bibbie's received requests")
+    # print(bobbie.friend_requests_from, "bobbie's received requests")
     
 
 # Uses a raw SQL query to TRUNCATE the users table.

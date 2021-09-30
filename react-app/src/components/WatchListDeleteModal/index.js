@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal } from '../../context/Modal'
 import { deleteList, fetchLists } from '../../store/watchlists';
+import styles from './WatchListDeleteModal.module.css'
 
 function WatchListDeleteModal({ listId, showDeleteModal, setShowDeleteModal }) {
     const dispatch = useDispatch()
@@ -19,10 +20,10 @@ function WatchListDeleteModal({ listId, showDeleteModal, setShowDeleteModal }) {
             {showDeleteModal && (
                 <Modal onClose={() => setShowDeleteModal(false)}>
                     <>
-                        <div>
-                            <button onClick={handleDelete}>CONFIRM
+                        <div className={styles.deleteform}>
+                            <button className={styles.addlistbutton1} onClick={handleDelete}>CONFIRM
                             </button>
-                            <button onClick={() => setShowDeleteModal(false)}>CANCEL
+                            <button className={styles.addlistbutton2} onClick={() => setShowDeleteModal(false)}>CANCEL
                             </button>
                         </div>
                     </>

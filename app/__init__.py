@@ -12,6 +12,9 @@ from .api.transfer_routes import transfer_routes
 from .api.transaction_routes import transaction_routes
 from .api.list_routes import list_routes
 from .api.stocks_routes import stock_routes
+from .api.friend_routes import friend_routes
+from .api.friend_request_routes import friend_request_routes
+from .api.comment_routes import comment_routes
 
 from app.models.seeds import seed_commands
 
@@ -39,6 +42,9 @@ app.register_blueprint(transfer_routes, url_prefix='/api/transfers')
 app.register_blueprint(transaction_routes, url_prefix='/api/transactions')
 app.register_blueprint(list_routes, url_prefix='/api/lists')
 app.register_blueprint(stock_routes, url_prefix='/api/watchliststocks')
+app.register_blueprint(friend_routes, url_prefix='/api/friends')
+app.register_blueprint(friend_request_routes, url_prefix='/api/friendrequests')
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
 db.init_app(app)
 Migrate(app, db)
 

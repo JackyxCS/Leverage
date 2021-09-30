@@ -1,0 +1,132 @@
+.login1 {
+    display: block;
+}
+
+.login2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+    box-sizing: inherit;
+}
+
+.login3 {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: inherit;
+}
+
+.login4 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    box-sizing: inherit;
+}
+
+.loginImage {
+    flex: 1 1 50%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-style: none;
+    box-sizing: inherit;
+}
+
+.loginform1 {
+    flex: 1 1 50%;
+    display: block;
+    box-sizing: inherit;
+}
+
+.loginform2 {
+    height: 400px;
+    margin-left: 52px;
+    margin-right: 52px;
+    max-width: 460px;
+    display: block;
+}
+
+.loginformheader {
+    margin-bottom: 4vh;
+    margin-top: 12px;
+    display: block;
+    font-size: 1.5rem;
+}
+
+.loginform3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    display: block;
+}
+
+.loginformfooter {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+}
+
+.loginformemail {
+    width: 100%;
+    min-width: 39px;
+    max-width: 640px;
+    display: block;
+}
+
+.labels {
+    width: 100%;
+    margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+}
+
+.inputs {
+    width: 20vw;
+    height: 4vh;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding-left: 0.5vw;
+    background-color: white;
+}
+
+.loginbuttons1 {
+    background-color: rgb(0,200,5);
+    color: white;
+    height: 48px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    font-weight: bold;
+}
+
+.loginbuttons2 {
+    background-color: rgb(0,200,5);
+    color: white;
+    height: 48px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    margin-left: 1vw;
+    font-weight: bold;
+}
+
+.errorsdiv {
+    margin-top: 3vh;
+    font-size: 14px;
+}

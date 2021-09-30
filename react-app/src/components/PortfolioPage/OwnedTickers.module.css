@@ -1,0 +1,24 @@
+.eachtickerdetail {
+    padding-bottom: 1.5vh;
+}
+
+.eachtickerhalf {
+    display: flex;
+    justify-content: space-between;
+    /* gap: 2vw; */
+}
+
+/* .pricedetails {
+    display: flex;
+    justify-content: flex-end;
+} */
+
+/* .ticker {
+    display: flex;
+    align-items: center;
+} */
+
+.navlink {
+    text-decoration: none;
+    color: black;
+}
