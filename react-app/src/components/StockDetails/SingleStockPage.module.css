@@ -261,3 +261,9 @@
     justify-content: center;
     /* padding-top: 1.5vh; */
 }
+
+.nowatchlists {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+}
