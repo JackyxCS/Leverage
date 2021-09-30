@@ -45,7 +45,7 @@ const WatchListStock = () => {
         )
     } else {
         return (
-            <div>Added to watchlists</div>
+            <div className={styles.nowatchlists}>Create a new watchlist to add to</div>
         )
     }
 }
