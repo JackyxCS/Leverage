@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchComments, postComment } from '../../store/comments';
 import styles from './Social.module.css'
 
 
 const CreateCommentForm = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { transactionId } = useParams()
     const user = useSelector(state => state.session.user)
     const { id: userId } = user

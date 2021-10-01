@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LoginForm from './LoginForm';
 import styles from './LoginForm.module.css'
 
@@ -9,6 +9,7 @@ const LoginContainer = () => {
                 <div className={styles.login3}>
                     <div className={styles.login4}>
                         <img
+                            alt=""
                             className={styles.loginImage}
                             aria-hidden="true"
                             data-test-id="default-image"

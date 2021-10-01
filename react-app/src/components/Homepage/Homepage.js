@@ -1,11 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import './Homepage.css'
 
 function Homepage() {
-
     return (
         <div className="homepage">
             <div className="homepage1">
@@ -46,7 +42,7 @@ function Homepage() {
                                     <img
                                         className="video-image"
                                         draggable="false"
-                                        role="presentation"
+                                        alt=""
                                         src="https://robinhood.com/us/en/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png"
                                         srcSet="https://robinhood.com/us/en/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png, https://robinhood.com/us/en/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png 2x, https://robinhood.com/us/en/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png 3x" />
                                 </video>

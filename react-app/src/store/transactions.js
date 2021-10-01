@@ -42,7 +42,7 @@ export const fetchTransactions = () => async (dispatch) => {
     return transactions.transactions
 }
 
-// gets ALL transactions for homepage to render owned stocks
+// gets ALL transactions of every user for homepage to render owned stocks
 export const fetchAllTransactions = () => async (dispatch) => {
     const res = await fetch('/api/transactions/all')
     const transactions = await res.json()

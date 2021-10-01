@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import User from './components/User';
 import { authenticate } from './store/session';
 import TransferForm from './components/Transfers/TransferForm';
 import { getKey } from './store/key';
@@ -15,6 +14,7 @@ import SignupContainer from './components/auth/SignupContainer';
 import PortfolioContainer from './components/PortfolioPage/PortfolioContainer';
 import SingleStockPage from './components/StockDetails/SingleStockPage';
 import SocialContainer from './components/Social/SocialContainer';
+import UserProfile from './components/UserProfile/Profile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,7 +48,7 @@ function App() {
 
         <ProtectedRoute path='/profile' exact={true} >
           <NavBar />
-          <User />
+          <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path='/transfers'>
           <NavBar />

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import { fetchAllTransactions, fetchTransactions } from '../../store/transactions';
+import { fetchAllTransactions } from '../../store/transactions';
 import { fetchComments } from '../../store/comments';
 import CreateCommentForm from './CreateCommentForm';
 import CommentDetail from './CommentDetail';
@@ -13,8 +11,6 @@ const SingleTransaction = () => {
     const dispatch = useDispatch()
     const { transactionId } = useParams()
 
-    const user = useSelector(state => state.session.user)
-    const { id: userId } = user
     const transactions = useSelector(state => Object.values(state?.transactions))
     const transaction = transactions?.filter(transaction => Number(transaction.id) === Number(transactionId))[0]
     const comments = useSelector(state => Object.values(state.comments))

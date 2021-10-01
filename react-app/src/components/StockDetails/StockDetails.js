@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { fetchCompanyDetails, fetchStockDetails, fetchStockNews } from '../../store/stocks';
-// import { fetchOneStockTransactions } from '../../store/transactions';
 import styles from './SingleStockPage.module.css'
 
 const StockDetails = () => {
@@ -11,7 +10,6 @@ const StockDetails = () => {
     // const history = useHistory()
     // const user = useSelector(state => state?.session.user)
     const key = useSelector(state => state?.key.key)
-    // const transactions = useSelector(state => Object.values(state?.transactions))
     const { stockticker } = useParams()
 
     const [companyDetails, setCompanyDetails] = useState({})

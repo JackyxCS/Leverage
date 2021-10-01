@@ -1,0 +1,35 @@
+.deleteform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid lightgray;
+    height: 25vh;
+    width: 20vw;
+    border-radius: 3px;
+}
+
+.button1 {
+    height: 3vh;
+    width: 15vw;
+    margin-top: 0.5vh;
+    justify-content: center;
+    background-color: #00c805;
+    border: 1px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+.button2 {
+    height: 3vh;
+    width: 15vw;
+    margin-top: 0.5vh;
+    justify-content: center;
+    background-color: #FF5000;
+    border: 1px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}

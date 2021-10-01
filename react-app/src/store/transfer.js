@@ -64,7 +64,8 @@ const transfersReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_TRANSFERS: {
             const newState = {}
-            const arr = action.transfers
+            const arr = action.transfers.transfers
+            // console.log(arr, 'transfers arr')
             arr.forEach(transfer => {
                 newState[transfer.id] = transfer
             })

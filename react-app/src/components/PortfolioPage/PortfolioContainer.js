@@ -10,7 +10,17 @@ import { fetchTransactions } from '../../store/transactions';
 
 const PortfolioContainer = () => {
     const dispatch = useDispatch()
-    const ownedStocks = useSelector(state => state?.owned)
+    const ownedStocks2 = useSelector(state => state?.owned)
+    let ownedStocks = {}
+
+    // useEffect(() => {
+    for (let key in ownedStocks2) {
+        if (ownedStocks2[key] !== 0) {
+            ownedStocks[key] = ownedStocks2[key]
+        }
+    }
+    // }, [ownedStocks2])
+
     const ownedtickers = Object.keys(ownedStocks)
 
     useEffect(() => {
@@ -29,7 +39,7 @@ const PortfolioContainer = () => {
                             <div className={styles.sidebar2}>
                                 <div className={styles.stockstext}>Stocks</div>
                                 <div className={styles.ownedtickers}>
-                                    {ownedtickers.map((ticker) => (
+                                    {ownedtickers?.map((ticker) => (
                                         <OwnedTicker key={ticker} ticker={ticker} />
                                     ))}
                                 </div>
