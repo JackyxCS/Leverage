@@ -267,3 +267,11 @@
     justify-content: center;
     margin-top: 2vh;
 }
+
+.errorsdiv {
+    font-size: 14px;
+    color: #FF5000;
+    font-style: italic;
+    display: flex;
+    justify-content: center;;
+}

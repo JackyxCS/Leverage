@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { deleteFriendRequest, fetchFriendRequests } from '../../store/friendrequests';
 import { fetchFriends, postFriend } from '../../store/friends';
 import styles from './Social.module.css'

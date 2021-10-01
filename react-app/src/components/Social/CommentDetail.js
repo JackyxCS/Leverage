@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
 import { fetchComments } from '../../store/comments';
 import { createUpdate } from '../../store/comments';
 import DeleteCommentModal from '../DeleteCommentModal/index';
@@ -8,7 +7,6 @@ import styles from './Social.module.css'
 
 const CommentDetail = ({ comment }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const user = useSelector(state => state.session.user);
     const { id: userId } = user
     const transactionId = comment.transactionId
@@ -58,15 +56,17 @@ const CommentDetail = ({ comment }) => {
     if (userId === comment.userId) {
         if (showEditModal) {
             return (
-                <div>
-                    <form onSubmit={handleSubmit}>
+                <div className={styles.editform}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
                         <textarea
+                            className={styles.expandedinputcomment}
                             placeholder={comment.comment}
                             name="updatedComment"
                             value={updatedComment}
                             onChange={(e) => setUpdatedComment(e.target.value)}
                         />
                         <button
+                            className={styles.addlistbutton1}
                             type="submit"
                             disabled={validationErrors.length > 0}
                         >
@@ -75,6 +75,7 @@ const CommentDetail = ({ comment }) => {
                     </form>
                     <form>
                         <button
+                            className={styles.addlistbutton2}
                             onClick={() => setShowEditModal(false)}
                         >
                             Cancel
@@ -86,7 +87,7 @@ const CommentDetail = ({ comment }) => {
             return (
                 <div className={styles.commentdivform}>
                     <div className={styles.friendusername}>{comment.comment}</div>
-                    <div className={styles.friendusername}>{comment.user_details.username}</div>
+                    <div className={styles.commentuser}>{comment.user_details.username}</div>
                     <div className={styles.commentbuttondiv}>
                         <button
                             className={styles.commenteditbutton}
@@ -109,7 +110,7 @@ const CommentDetail = ({ comment }) => {
         return (
             <div className={styles.commentdivform}>
                 <div className={styles.friendusername}>{comment.comment}</div>
-                <div className={styles.friendusername}>{comment?.user_details?.username}</div>
+                <div className={styles.commentuser}>{comment?.user_details?.username}</div>
             </div>
         );
 

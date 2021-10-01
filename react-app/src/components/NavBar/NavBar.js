@@ -1,11 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBarForm from '../StockSearch/SearchBarForm';
-import AboutMeModal from '../AboutMeModal';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from './Dropdown';
 import styles from './NavBar.module.css'
 
@@ -32,14 +28,6 @@ const NavBar = () => {
               Sign Up
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
-            </NavLink>
-          </li> */}
-          {/* <li>
-            <LogoutButton />
-          </li> */}
         </ul>
       </nav>
     )

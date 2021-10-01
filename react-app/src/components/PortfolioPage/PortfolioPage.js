@@ -1,29 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import { NavLink, useParams } from 'react-router-dom';
-import { getKey } from '../../store/key';
+import { NavLink } from 'react-router-dom';
 import { fetchOwnedStocks } from '../../store/ownedstocks';
-import { fetchPortfolioStocks, fetchStockGraph, fetchStockNews } from '../../store/stocks';
+import { fetchPortfolioStocks, fetchStockNews } from '../../store/stocks';
 import { XAxis, YAxis, Tooltip, Line, LineChart, ReferenceLine } from 'recharts';
 import { fetchTransactions } from '../../store/transactions';
-import { fetchUsers } from '../../store/users';
 import { fetchLists } from '../../store/watchlists';
-import { fetchFriends } from '../../store/friends';
-import { fetchFriendRequests } from '../../store/friendrequests';
-import { fetchComments } from '../../store/comments';
 import styles from './PortfolioContainer.module.css'
 
 const PortfolioPage = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
     const user = useSelector(state => state?.session.user)
     const key = useSelector(state => state?.key.key)
     const ownedStocks = useSelector(state => state?.owned)
-    const ownedtickers = Object.keys(ownedStocks)
-    const { id: userId } = user
 
-    const [ownedShares, setOwnedShares] = useState({})
     const [graphObject, setGraphObject] = useState([])
     const [graphColor, setGraphColor] = useState('')
     const [stockPrice, setStockPrice] = useState(0)
@@ -139,14 +129,6 @@ const PortfolioPage = () => {
                             stroke="lightslategray" />
                     </LineChart>
                 </div>
-                {/* <div>
-                    {ownedtickers.map((ticker) => (
-                        <div key={ticker}>
-                            <div>{ticker.toUpperCase()}</div>
-                            <div>{ownedStocks[ticker]} Shares</div>
-                        </div>
-                    ))}
-                </div> */}
                 <div className={styles.portfoliotime}>
                     1D
                 </div>
@@ -163,8 +145,6 @@ const PortfolioPage = () => {
                                 <div className={styles.newsheadline}>{homePageNews[0]?.headline}</div>
                                 <div className={styles.newssummary}>{homePageNews[0]?.summary}</div>
                             </div>
-                            {/* <div>{Date((homePageNews[0].datetime))}</div> */}
-                            {/* <div>{homePageNews[0].provider}</div> */}
                             <div>
                                 <img className={styles.image} src={homePageNews[0]?.image} alt="" />
                             </div>

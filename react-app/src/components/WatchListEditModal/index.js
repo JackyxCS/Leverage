@@ -4,7 +4,7 @@ import { Modal } from '../../context/Modal'
 import { createUpdate, fetchLists } from '../../store/watchlists';
 import styles from './WatchListEditModal.module.css'
 
-function WatchListEditModal({ listId, showEditModal, setShowEditModal }) {
+function WatchListEditModal({ list, listId, showEditModal, setShowEditModal }) {
     const dispatch = useDispatch()
 
     const [validationErrors, setValidationErrors] = useState([])
@@ -43,7 +43,7 @@ function WatchListEditModal({ listId, showEditModal, setShowEditModal }) {
                         <form className={styles.form} onSubmit={handleEditSubmit}>
                             <input
                                 className={styles.expandedinput}
-                                placeholder="List Name"
+                                placeholder={list.title}
                                 name="watchlist"
                                 value={watchListName}
                                 onChange={(e) => setWatchListName(e.target.value)}

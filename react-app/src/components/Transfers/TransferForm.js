@@ -18,9 +18,9 @@ const TransferForm = () => {
 
     useEffect(() => {
         const errors = [];
-        if (!transferType) errors.push("Transfer type is required")
+        if (transferType === "initial") errors.push("Transfer type is required")
         if (amount <= 0) errors.push("You must enter an amount")
-        if (transferType === 'WITHDRAW' && (amount > parseInt(user?.balance))) errors.push("Insufficient funds")
+        if (transferType === 'WITHDRAW' && (+amount > parseInt(user?.balance))) errors.push("Insufficient funds")
         setValidationErrors(errors)
     }, [amount, transferType, user])
 
@@ -50,6 +50,11 @@ const TransferForm = () => {
     return (
         <div className={styles.transferdiv}>
             <form className={styles.transferform} onSubmit={handleSubmit}>
+                <div>
+                    {validationErrors.map(error => (
+                        <div className={styles.errorsdiv} key={error}>{error}</div>
+                    ))}
+                </div>
                 <select
                     className={styles.selectelement}
                     value={transferType}

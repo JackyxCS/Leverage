@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import { useParams } from 'react-router-dom';
-import { getKey } from '../../store/key';
 import { fetchLists, postList } from '../../store/watchlists';
 import styles from './WatchListForm.module.css'
 
 const WatchListForm = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
     const user = useSelector(state => state?.session.user)
     const { id: userId } = user
 

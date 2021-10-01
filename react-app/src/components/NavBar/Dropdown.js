@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import styles from './Dropdown.module.css';
 
 function Dropdown() {
-    const history = useHistory();
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {

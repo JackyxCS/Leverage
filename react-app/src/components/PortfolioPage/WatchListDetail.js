@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import { fetchStocks } from '../../store/watchliststocks';
 import DeleteStockForm from './DeleteStockForm';
-import OwnedTicker from './OwnedTickers';
 import WatchedTickers from './WatchedTickers';
-// import WatchedTicker from './PortfolioPage/WatchedTickers';
 import WatchListDeleteModal from '../WatchListDeleteModal';
 import WatchListEditModal from '../WatchListEditModal';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,9 +14,6 @@ import styles from './WatchListDetail.module.css'
 
 const WatchListDetail = ({ list }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const user = useSelector(state => state.session.user);
-    const { id: userId } = user
     const stocks = useSelector(state => Object.values(state.stocks))
     const filtered_stocks = stocks.filter(stock => Number(stock.watchListId) === Number(list.id))
 
@@ -63,11 +56,11 @@ const WatchListDetail = ({ list }) => {
             <div className={styles.eachliststock}>
                 <div>
                     {filtered_stocks.map((stock) => (
-                        <div key={stock} className={styles.detaildiv}>
+                        <div key={stock.id} className={styles.detaildiv}>
                             <NavLink className={styles.navlink} to={`/stocks/${stock.ticker}`}>
                                 <WatchedTickers ticker={stock.ticker} />
                             </NavLink>
-                                <DeleteStockForm key={stock.id} stock={stock} />
+                            <DeleteStockForm key={stock.id} stock={stock} />
                         </div>
                     ))}
                 </div>
@@ -78,7 +71,7 @@ const WatchListDetail = ({ list }) => {
                 </div> */}
             </div>
             {showDeleteModal && <WatchListDeleteModal listId={list.id} showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal} />}
-            {showEditModal && <WatchListEditModal listId={list.id} showEditModal={showEditModal} setShowEditModal={setShowEditModal} />}
+            {showEditModal && <WatchListEditModal list={list} listId={list.id} showEditModal={showEditModal} setShowEditModal={setShowEditModal} />}
         </div >
     )
 }

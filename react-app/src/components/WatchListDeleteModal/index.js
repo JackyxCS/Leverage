@@ -21,7 +21,7 @@ function WatchListDeleteModal({ listId, showDeleteModal, setShowDeleteModal }) {
                 <Modal onClose={() => setShowDeleteModal(false)}>
                     <>
                         <div className={styles.deleteform}>
-                            <button className={styles.addlistbutton1} onClick={handleDelete}>CONFIRM
+                            <button className={styles.addlistbutton1} onClick={handleDelete}>DELETE?
                             </button>
                             <button className={styles.addlistbutton2} onClick={() => setShowDeleteModal(false)}>CANCEL
                             </button>

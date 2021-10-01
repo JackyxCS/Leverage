@@ -61,3 +61,12 @@
     font-size: 16px;
     font-weight: 700;
 }
+
+.errorsdiv {
+    font-size: 14px;
+    color: #FF5000;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5vh;
+}

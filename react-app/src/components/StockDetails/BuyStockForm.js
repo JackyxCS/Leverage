@@ -43,7 +43,7 @@ const BuyStockForm = () => {
         if (activeForm === "SELL" && (shares > ownedShares)) errors.push("You do not have enough shares")
         if (transactionPrice === 0) errors.push("Please wait until market hours")
         setValidationErrors(errors)
-    }, [shares, activeForm, transactionPrice, user])
+    }, [shares, activeForm, transactionPrice, user, ownedShares])
 
     useEffect(() => {
         dispatch(fetchOneStockTransactions(stockticker))
@@ -102,12 +102,12 @@ const BuyStockForm = () => {
                             onClick={(() => setActiveForm("BUY"))}>Buy</div>
                         <div className={styles.buttondiv} onClick={(() => setActiveForm("SELL"))}>Sell</div>
                     </div>
+                    <div>
+                        {validationErrors.map(error => (
+                            <div className={styles.errorsdiv} key={error}>{error}</div>
+                        ))}
+                    </div>
                     <form className={styles.buysellform} onSubmit={handleBuySubmit}>
-                        {/* <ul>
-                            {validationErrors.map(error => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul> */}
                         <div className={styles.formelements}>
                             <div>Shares</div>
                             <input
@@ -132,7 +132,7 @@ const BuyStockForm = () => {
                         <button
                             className={styles.purchasebutton}
                             type="submit"
-                            disabled={validationErrors.length > 0}
+                        // disabled={validationErrors.length > 0}
                         >
                             Purchase
                         </button>
@@ -146,6 +146,11 @@ const BuyStockForm = () => {
                     <div className={styles.activeform}>
                         <div className={styles.buttondiv} onClick={(() => setActiveForm("BUY"))}>Buy</div>
                         <div className={styles.buttondiv} onClick={(() => setActiveForm("SELL"))}>Sell</div>
+                    </div>
+                    <div>
+                        {validationErrors.map(error => (
+                            <div className={styles.errorsdiv} key={error}>{error}</div>
+                        ))}
                     </div>
                     <form className={styles.buysellform} onSubmit={handleSellSubmit}>
                         {/* <ul>
@@ -191,6 +196,11 @@ const BuyStockForm = () => {
             <>
                 <div className={styles.activeform}>
                     <div className={styles.buttondiv}>Buy</div>
+                </div>
+                <div>
+                    {validationErrors.map(error => (
+                        <div className={styles.errorsdiv} key={error}>{error}</div>
+                    ))}
                 </div>
                 <form className={styles.buysellform} onSubmit={handleBuySubmit}>
                     {/* <ul>

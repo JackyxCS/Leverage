@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import FriendRequestForm from './FriendRequestForm';
 import FriendRequestsFrom from './FriendRequestsFrom';
 import FriendRequestsTo from './FriendRequestsTo';

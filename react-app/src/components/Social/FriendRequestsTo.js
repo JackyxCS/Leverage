@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import { useParams } from 'react-router-dom';
 import { fetchFriendRequests } from '../../store/friendrequests';
 import RequestsTo from './RequestsTo';
 import styles from './Social.module.css';
