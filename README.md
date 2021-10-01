@@ -104,18 +104,18 @@ To see the full feature list, user stories, RESTful routes, and more: https://gi
 
 ## Database Structure
 
-![](https://github.com/JackyxCS/Leverage/blob/main/design/db_schema.png)
+![](https://github.com/JackyxCS/Leverage/blob/main/design/dbdiagram.png)
 
 ## Leverage in Action
 
 * Homepage
-![](https://github.com/JackyxCS/Whereabouts/blob/main/design/homepage.png)
+![](https://github.com/JackyxCS/Leverage/blob/main/design/homepage.png)
 * Portfolio page
-![](https://github.com/JackyxCS/Whereabouts/blob/main/design/portfolio.png)
+![](https://github.com/JackyxCS/Leverage/blob/main/design/portfolio.png)
 * Asset page
-![](https://github.com/JackyxCS/Whereabouts/blob/main/design/asset.png)
+![](https://github.com/JackyxCS/Leverage/blob/main/design/asset.png)
 * Friends page
-![](https://github.com/JackyxCS/Whereabouts/blob/main/design/friends.png)
+![](https://github.com/JackyxCS/Leverage/blob/main/design/friends.png)
 
 ## Code Highlights
 
