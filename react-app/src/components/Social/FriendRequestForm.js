@@ -9,9 +9,16 @@ const FriendRequestForm = () => {
     const history = useHistory()
     const users = useSelector(state => Object.values(state.users))
     const user = useSelector(state => state.session.user)
+    const users_friends = useSelector(state => state.friends)
     const [message, setMessage] = useState('Enter username')
     const [search, setSearch] = useState('')
     // const [validationErrors, setValidationErrors] = useState([])
+
+    const users_friendname = users.filter(friend => users_friends.includes(+friend.id))
+    const friend_names = []
+    for (let i = 0; i < users_friendname.length; i++) {
+        friend_names.push(users_friendname[i].username)
+    }
 
     // thunk that returns
     const friend_requests = useSelector(state => state?.friendrequests)
@@ -19,8 +26,10 @@ const FriendRequestForm = () => {
     let existing_requests = []
     for (let i = 0; i < friend_requests[0]?.length; i++) {
         for (let key in friend_requests[0][i]) {
-            existing_requests.push(+friend_requests[0][i][key])
-            existing_requests.push(+key)
+            if (+key === +user.id || +friend_requests[0][i][key] === +user.id) {
+                existing_requests.push(+friend_requests[0][i][key])
+                existing_requests.push(+key)
+            }
         }
     }
 
@@ -31,7 +40,7 @@ const FriendRequestForm = () => {
     let existingUserNames = []
     for (let i = 0; i < existingUserRequests.length; i++) {
         if (existingUserRequests[i].id !== user.id)
-        existingUserNames.push(existingUserRequests[i].username)
+            existingUserNames.push(existingUserRequests[i].username)
     }
 
     useEffect(() => {
@@ -39,9 +48,10 @@ const FriendRequestForm = () => {
     }, [dispatch])
 
     let errors = [];
-    if (search.length === 0) errors=["Please enter a username"]
-    if (currentUsername === search) errors=["You cannot add yourself"]
-    if (existingUserNames.includes(search)) errors=["Request pending or you are already friends"]
+    if (search.length === 0) errors = ["Please enter a username"]
+    if (currentUsername === search) errors = ["You cannot add yourself"]
+    if (friend_names.includes(search)) errors = ["You are already friends"]
+    if (existingUserNames.includes(search)) errors = ["Request pending"]
 
     const handleSubmit = async (e) => {
         e.preventDefault()
