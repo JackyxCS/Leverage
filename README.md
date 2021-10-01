@@ -1,28 +1,27 @@
-Link Link: https://aa-leverage.herokuapp.com/
+# Leverage
 
-# Flask React Project
+Given an annual inflation rate of 5.4% in 2021 and the uncertainties the pandemic and the economy have presented both recently and in past market cycles, the importance of investing in creating future financial security cannot be understated. During a time when only 55% of Americans are participating in the financial markets, Leverage is a social investing app created to encourage more people to invest by leveraging the social engagement factor of experiencing something together with friends. Happy investing!
 
-This is the starter for the Flask React project.
+You can find the Leverage app here: https://aa-leverage.herokuapp.com/
 
-## Getting started
+## Development
 
-1. Clone this repository (only this branch)
+* Visit the project wiki to learn more about the app development process: https://github.com/JackyxCS/Leverage/wiki
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-
-2. Install dependencies
-
-      ```bash
+* To start the development environment:
+   
+   i. Clone the repository at: https://github.com/JackyxCS/Leverage
+   
+   ii. Install dependencies: ```bash
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
       ```
-
-3. Create a **.env** file based on the example with proper settings for your
+      
+   iii. Create a **.env** file based on the example with proper settings for your
    development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
-
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+   
+   iv. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+   
+   v. Get into your pipenv, migrate your database, seed your database, and run your flask app
 
    ```bash
    pipenv shell
@@ -40,97 +39,134 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
+   vi. Cd into react-app and run 
+   
+   ```
+   npm install
    ```
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
+   ```
+   npm start
    ```
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+## Technologies Used
 
-   ```bash
-   heroku login
-   ```
+* Languages
+   - Python
+   - JavaScript
+   - HTML
+   - CSS
 
-6. Login to the heroku container registry
+* Database
+   - PostgreSQL
 
-   ```bash
-   heroku container:login
-   ```
+* Backend
+   - Flask
+   - Flask-SQLAlchemy
+   - SQLAlchemy
+   - Node.js
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
+* Frontend
+   - React
+   - Redux
+   
+* Deployment and Version Control
+   - Git + Github
+   - Heroku
+   - Docker
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+## Features
 
-9. Release your docker container to heroku
+To see the full feature list, user stories, RESTful routes, and more: https://github.com/JackyxCS/Leverage/wiki
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
+* Users
+   - Users can signup, login, login as demo, logout
+   - Protected routes and authentication implemented throughout the site
+* Transfers
+   - Users can transfer money into and out of their account given that they have enough balance
+* Dashboard
+   - Users can view the aggregated chart of their account value, including their asset values and cash balance
+* Search
+   - Users can search for stocks by ticker and name
+   - Users can search for friends
+* Asset Page
+   - Users can view details about a specific stock and buy/sell that stocks given that they have enough balance/enough owned shares to sell
+* Watchlists
+   - Users can make a comment, see other comments, update their own comments, and delete their own comments
+* Friends
+   - Users can like posts, see the number of likes posts have, and remove their like
+* Friends Feed
+   - Users can see their friends' activities/transactions
+* Comments
+   - Users can comment on their friends' activities/transactions
+* External API
+   - IEX Cloud was the API used for fetching stock details and news
 
-10. set up your database
+## Database Structure
 
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
+![](https://github.com/JackyxCS/Leverage/blob/main/design/db_schema.png)
 
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
+## Leverage in Action
 
-12. profit
+* Homepage
+![](https://github.com/JackyxCS/Whereabouts/blob/main/design/homepage.png)
+* Portfolio page
+![](https://github.com/JackyxCS/Whereabouts/blob/main/design/portfolio.png)
+* Asset page
+![](https://github.com/JackyxCS/Whereabouts/blob/main/design/asset.png)
+* Friends page
+![](https://github.com/JackyxCS/Whereabouts/blob/main/design/friends.png)
 
-### For M1 Mac users
+## Code Highlights
 
-(Replaces **Step 8**)
+* When fetching stock information, there are certain time periods when no shares are traded. Given that no volume is traded, the average price returned is 0 even though the value of the stock is not 0 at that particular point in time. To resolve this issue, a backtracking algorithm was implemented to look for the previous average price when an average price of 0 is encountered. If the first time period has a price is 0, a look forward is performed instead and the price is set to the price of the first transaction of the day.
 
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
+```
+    // loop to fill in first value
+    for (let i = 0; i < arr.length; i++) {
+        let eachTimeFrame = arr[i]
+        for (let j = 0; j < eachTimeFrame.length; j++) {
+            while (!eachTimeFrame[0].average || eachTimeFrame[j].average === 0) {
+                eachTimeFrame[0].average = eachTimeFrame[j].average
+            }
+        }
+    }
 
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
+    // set up another loop to backtrack for averages in arr
+    for (let i = 0; i < arr.length; i ++) {
+        let eachTimeFrame = arr[i]
+        for (let j = 0; j < eachTimeFrame.length; j++) {
+            while (!eachTimeFrame[j].average || eachTimeFrame[j].average === 0) {
+                    eachTimeFrame[j].average = eachTimeFrame[j - 1].average
+                    j--
+            }
+        }
+    }
 
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
+```
 
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+* Another challenge lies in the fact that a user's owned stocks are not stored in the database. Instead, to evaluate a user's current stock positions, all of the user's previous transactions are aggregated to determine how many shares of which stocks they hold at any particular point in time. This is performed by the thunk below:
 
-3. Use docker to push the image to the Heroku container registry:
+```
+export const fetchOwnedStocks = () => async (dispatch) => {
+    const res = await fetch('/api/transactions/')
+    const json = await res.json()
+    const data = json.transactions
+    const ownedStock = {}
+    for (let i = 0; i < data.length; i++) {
+        let trans = data[i]
+        let ticker = trans["ticker"]
+        if (ownedStock[ticker] === undefined) {
+            ownedStock[ticker] = parseFloat(trans["trans_quantity"])
+        } else {
+            ownedStock[ticker] += parseFloat(trans["trans_quantity"])
+        }
+    }
+    dispatch(setOwnedStocks(ownedStock))
+    return ownedStock
+}
+```
 
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+## Conclusion
+
+* A major challenge of creating a stock-trading app is the accuracy of stock data and how that information is process and presented to the user. For Leverage, this involved fetching data from an external API and manipulating that data so that the user can seamlessly view charts for their portfolio and any stock as well as purchase and sell assets at the latest price. Creating Leverage taught me a lot about not only technical applications, but also about the user experience when dealing with important issues like money and investing.
