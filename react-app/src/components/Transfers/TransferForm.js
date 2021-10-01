@@ -50,7 +50,7 @@ const TransferForm = () => {
     return (
         <div className={styles.transferdiv}>
             <form className={styles.transferform} onSubmit={handleSubmit}>
-                <div>
+                <div className={styles.errors}>
                     {validationErrors.map(error => (
                         <div className={styles.errorsdiv} key={error}>{error}</div>
                     ))}
