@@ -17,8 +17,8 @@ const WatchListDisplay = () => {
     } else {
         return (
             <div className={styles.watchlistscontainer}>
-                {!!watchlists.length && watchlists?.map((list) => (
-                    <WatchListDetail key={list.id} list={list} />
+                {!!watchlists.length && watchlists?.map((list, index) => (
+                    <WatchListDetail key={index} list={list} />
                 ))}
             </div>
         )
