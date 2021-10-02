@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { fetchFriendRequests, postFriendRequest } from '../../store/friendrequests';
+import { fetchFriends } from '../../store/friends';
 import styles from './Social.module.css'
 
 const FriendRequestForm = () => {
@@ -9,12 +10,12 @@ const FriendRequestForm = () => {
     const history = useHistory()
     const users = useSelector(state => Object.values(state.users))
     const user = useSelector(state => state.session.user)
-    const users_friends = useSelector(state => state.friends)
+    const users_friends = useSelector(state => state?.friends)
     const [message, setMessage] = useState('Enter username')
     const [search, setSearch] = useState('')
     // const [validationErrors, setValidationErrors] = useState([])
 
-    const users_friendname = users.filter(friend => users_friends.includes(+friend.id))
+    const users_friendname = users?.filter(friend => users_friends?.includes(+friend.id))
     const friend_names = []
     for (let i = 0; i < users_friendname.length; i++) {
         friend_names.push(users_friendname[i].username)
@@ -45,6 +46,7 @@ const FriendRequestForm = () => {
 
     useEffect(() => {
         dispatch(fetchFriendRequests())
+        dispatch(fetchFriends())
     }, [dispatch])
 
     let errors = [];
