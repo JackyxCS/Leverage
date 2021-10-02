@@ -16,6 +16,10 @@ function WatchListEditModal({ list, listId, showEditModal, setShowEditModal }) {
         setValidationErrors(errors)
     }, [watchListName])
 
+    useEffect(() => {
+        setWatchListName(list.title)
+    }, [list])
+
     const handleEditSubmit = async (e) => {
         e.preventDefault()
 
@@ -43,9 +47,8 @@ function WatchListEditModal({ list, listId, showEditModal, setShowEditModal }) {
                         <form className={styles.form} onSubmit={handleEditSubmit}>
                             <input
                                 className={styles.expandedinput}
-                                placeholder={list.title}
                                 name="watchlist"
-                                value={watchListName}
+                                defaultValue={watchListName}
                                 onChange={(e) => setWatchListName(e.target.value)}
                             />
                             <button
