@@ -27,19 +27,19 @@ function Dropdown() {
         <div onClick={openMenu}>Account
             {showMenu && (
                 <div className={styles.dropdown}>
-                    <div>
-                        <NavLink className={styles.textdecoration} to='/profile'>
-                            Profile
-                        </NavLink>
-                    </div>
-                    <div>
-                        <NavLink className={styles.textdecoration} to='/transfers'>
-                            Transfers
-                        </NavLink>
-                    </div>
-                    <div>
-                        <LogoutButton />
-                    </div>
+                    {/* <div> */}
+                    <NavLink className={styles.textdecoration} to='/profile'>
+                        Profile
+                    </NavLink>
+                    {/* </div> */}
+                    {/* <div> */}
+                    <NavLink className={styles.textdecoration} to='/transfers'>
+                        Transfers
+                    </NavLink>
+                    {/* </div> */}
+                    {/* <div> */}
+                    <LogoutButton />
+                    {/* </div> */}
                 </div>
             )}
         </div>
