@@ -30,7 +30,6 @@ def username_length(form, field):
     if len(username) > 40:
         raise ValidationError('too long (40 max)')
 
-
 def password_confirm(form, field):
     # Checking if passwords match
     password1 = form.data['password']
