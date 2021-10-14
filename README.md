@@ -1,6 +1,6 @@
 # Leverage
 
-Given an annual inflation rate of 5.4% in 2021 and the uncertainties the pandemic and the economy have presented both recently and in past market cycles, the importance of investing in creating future financial security cannot be understated. During a time when only 55% of Americans are participating in the financial markets, Leverage is a social investing app created to encourage more people to invest by leveraging the social engagement factor of experiencing something together with friends. Happy investing!
+Given an annual inflation rate of 5.4% in 2021 and the uncertainties the pandemic and the economy have presented both recently and in past market cycles, the importance of investing in creating future financial security cannot be overstated. During a time when only 55% of Americans are participating in the financial markets, Leverage is a social investing app created to encourage more people to invest by leveraging the social engagement factor of experiencing something together with friends. Happy investing!
 
 You can find the Leverage app here: https://aa-leverage.herokuapp.com/
 
