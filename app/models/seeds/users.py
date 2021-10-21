@@ -6,9 +6,9 @@ def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password', balance=5000.00)
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', balance=0.00)
+        username='marnie', email='marnie@aa.io', password='password', balance=1000.00)
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', balance=0.00)
+        username='bobbie', email='bobbie@aa.io', password='password', balance=1000.00)
     jacky = User(
         username='Jacky', email='jacky@jacky.com', password='password', balance=1000.00)
     sarah = User(
