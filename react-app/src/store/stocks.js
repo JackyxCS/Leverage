@@ -60,8 +60,8 @@ export const fetchManyStockNews = (key, ticker) => async () => {
 
 // fetch stocks for portfolio page
 export const fetchPortfolioStocks = (key, ownedShares, balance) => async () => {
-    const sharesArr = Object.keys(ownedShares)
-    const numSharesArr = Object.values(ownedShares)
+    const sharesArr = Object.keys(ownedShares) // ['aapl', 'ibm']
+    const numSharesArr = Object.values(ownedShares) // [5, 1]
     const graphArr = []
     const arr = []
     for (let i = 0; i < sharesArr.length; i++) {
@@ -103,12 +103,13 @@ export const fetchPortfolioStocks = (key, ownedShares, balance) => async () => {
                     "minute": eachPlot["minute"], "label": eachPlot["label"]
                 })
             }
-        } else {
-            for (let k = 0; k < eachTimeFrame.length; k++) {
-                let eachPlot = eachTimeFrame[k]
-                graphArr[k].average += (eachPlot["average"] * numShares)
-            }
-        }
+        } 
+        // else {
+        //     for (let k = 0; k < eachTimeFrame.length; k++) {
+        //         let eachPlot = eachTimeFrame[k]
+        //         graphArr[k].average += (eachPlot["average"] * numShares)
+        //     }
+        // }
     }
     return graphArr;
 }
