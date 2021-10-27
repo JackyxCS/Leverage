@@ -33,17 +33,23 @@ const OwnedTicker = ({ ticker }) => {
         ownedShares = 'share'
     }
 
-    useEffect(() => {
-        (async () => {
-            await dispatch(fetchTransactions());
-        })();
-    }, [dispatch])
+    // useEffect(() => {
+    //     (async () => {
+    //         await dispatch(fetchTransactions());
+    //     })();
+    // }, [dispatch])
 
     useEffect(() => {
+        let mounted = true
+        if (mounted) {
+        dispatch(fetchTransactions())
         dispatch(fetchStockDetails(key, ticker))
             .then((data) => {
                 setStockDetails(data)
             })
+        }
+
+        return () => mounted = false
     }, [dispatch, key, ticker])
 
     if (Object.values(stockDetails)?.length > 0) {
