@@ -104,6 +104,7 @@ export const fetchPortfolioStocks = (key, ownedShares, balance) => async () => {
                 })
             }
         } 
+        
         // else {
         //     for (let k = 0; k < eachTimeFrame.length; k++) {
         //         let eachPlot = eachTimeFrame[k]
